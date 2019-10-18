@@ -122,8 +122,12 @@ public class DDMFormInstanceRecordLocalServiceImpl
 		ddmFormInstanceRecord.setVersionUserId(user.getUserId());
 		ddmFormInstanceRecord.setVersionUserName(user.getFullName());
 
+		DDMFormInstanceSettings settingsModel =
+			ddmFormInstance.getSettingsModel();
+
 		long ddmStorageId = createDDMContent(
-			ddmFormInstanceId, ddmFormValues, serviceContext);
+			ddmFormInstanceId, ddmFormValues, serviceContext,
+			settingsModel.storageType());
 
 		ddmFormInstanceRecord.setStorageId(ddmStorageId);
 
@@ -390,10 +394,13 @@ public class DDMFormInstanceRecordLocalServiceImpl
 		DDMFormInstance ddmFormInstance =
 			ddmFormInstanceRecord.getFormInstance();
 
+		DDMFormInstanceSettings settingsModel =
+			ddmFormInstance.getSettingsModel();
+
 		if (ddmFormInstanceRecordVersion.isApproved()) {
 			long ddmStorageId = createDDMContent(
 				ddmFormInstance.getFormInstanceId(), ddmFormValues,
-				serviceContext);
+				serviceContext, settingsModel.storageType());
 
 			String version = getNextVersion(
 				ddmFormInstanceRecordVersion.getVersion(), majorVersion,
@@ -405,7 +412,8 @@ public class DDMFormInstanceRecordLocalServiceImpl
 		}
 		else {
 			updateDDMContent(
-				ddmFormInstanceRecordVersion, ddmFormValues, serviceContext);
+				ddmFormInstanceRecordVersion, ddmFormValues, serviceContext,
+				settingsModel.storageType());
 
 			String version = ddmFormInstanceRecordVersion.getVersion();
 
@@ -572,7 +580,7 @@ public class DDMFormInstanceRecordLocalServiceImpl
 
 	protected long createDDMContent(
 			long ddmFormInstanceId, DDMFormValues ddmFormValues,
-			ServiceContext serviceContext)
+			ServiceContext serviceContext, String storageType)
 		throws PortalException {
 
 		validate(ddmFormValues, serviceContext);
@@ -589,7 +597,7 @@ public class DDMFormInstanceRecordLocalServiceImpl
 				DDMStorageLink.class.getName()
 			).build();
 
-		DDMStorageAdapter ddmStorageAdapter = getDDMStorageAdapter();
+		DDMStorageAdapter ddmStorageAdapter = getDDMStorageAdapter(storageType);
 
 		DDMStorageAdapterSaveResponse ddmStorageAdapterSaveResponse =
 			ddmStorageAdapter.save(ddmStorageAdapterSaveRequest);
@@ -639,6 +647,10 @@ public class DDMFormInstanceRecordLocalServiceImpl
 	protected DDMStorageAdapter getDDMStorageAdapter() {
 		return _ddmStorageAdapterTracker.getDDMStorageAdapter(
 			StorageType.JSON.toString());
+	}
+
+	protected DDMStorageAdapter getDDMStorageAdapter(String storageType) {
+		return _ddmStorageAdapterTracker.getDDMStorageAdapter(storageType);
 	}
 
 	protected List<DDMFormInstanceRecord> getFormInstanceRecords(Hits hits)
@@ -819,7 +831,8 @@ public class DDMFormInstanceRecordLocalServiceImpl
 
 	protected void updateDDMContent(
 			DDMFormInstanceRecordVersion ddmFormInstanceRecordVersion,
-			DDMFormValues ddmFormValues, ServiceContext serviceContext)
+			DDMFormValues ddmFormValues, ServiceContext serviceContext,
+			String storageType)
 		throws PortalException {
 
 		validate(ddmFormValues, serviceContext);
@@ -834,7 +847,7 @@ public class DDMFormInstanceRecordLocalServiceImpl
 				ddmFormInstanceRecordVersion.getStorageId()
 			).build();
 
-		DDMStorageAdapter ddmStorageAdapter = getDDMStorageAdapter();
+		DDMStorageAdapter ddmStorageAdapter = getDDMStorageAdapter(storageType);
 
 		ddmStorageAdapter.save(ddmStorageAdapterSaveRequest);
 	}
