@@ -220,6 +220,8 @@ definition {
 
 		FormsAdminNavigator.gotoEditField(fieldName = "TextFieldRequired");
 
+		Form.gotoAdvancedTab();
+
 		var fieldName2 = FormFields.getFieldName();
 
 		Form.closeSidebar();
