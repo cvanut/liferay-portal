@@ -186,6 +186,8 @@ definition {
 
 		FormsAdminNavigator.gotoEditField(fieldName = "Text Field Required");
 
+		FormFields.editFieldName(fieldValue = "TextFieldRequired1");
+
 		Form.gotoAdvancedTab();
 
 		var fieldName1 = FormFields.getFieldName();
