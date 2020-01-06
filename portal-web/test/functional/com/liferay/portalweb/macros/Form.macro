@@ -49,7 +49,7 @@ definition {
 
 		Pause(locator1 = "1000");
 
-		AssertElementNotPresent(locator1 = "Form#SIDEBAR_CLOSE");
+		//AssertElementNotPresent(locator1 = "Form#SIDEBAR_CLOSE");
 	}
 
 	macro configureEmailNotifications {
