@@ -144,21 +144,9 @@ definition {
 
 		FormsAdminNavigator.gotoViewEntries();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-		FormsAdmin.viewFormTableEntry(
-			fieldLabel = "Text Field With Autocomplete",
-			fieldValue = "United States Virgin Islands");
-=======
-		// FormsAdmin.viewFormTableEntry(
-		// 	fieldLabel = "Text Field With Autocomplete",
-		// 	fieldValue = "United States");
->>>>>>> LRQA-54106 Switch AssertElementNotPresent to AssertNotVisible
-=======
 		FormsAdmin.viewFormTableEntry(
 			fieldLabel = "Text Field With Autocomplete",
 			fieldValue = "United States");
->>>>>>> LRQA-54106 Revert commented commands to active
 
 		Navigator.openURL();
 
@@ -178,20 +166,12 @@ definition {
 			key_radioOption = "From Data Provider",
 			locator1 = "FormFields#RADIO_OPTION_LABEL");
 
-<<<<<<< HEAD
-		Click(locator1 = "FormFields#SWITCHER_TEXTFIELD");
-
-		Form.gotoAdvancedTab();
-
-		Form.gotoAutocompleteTab();
-=======
 		Form.disableAutocompleteSwitcherTextField();
 
 		AssertNotVisible(
 			key_fieldName = "dataSourceType",
 			key_radioOption = "From Data Provider",
 			locator1 = "FormFields#RADIO_OPTION_LABEL");
->>>>>>> LRQA-54106 Switch AssertElementNotPresent to AssertNotVisible
 
 		Form.closeSidebar();
 
