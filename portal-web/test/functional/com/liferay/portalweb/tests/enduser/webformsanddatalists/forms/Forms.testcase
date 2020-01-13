@@ -4214,7 +4214,7 @@ definition {
 
 		FormFields.viewFieldName(fieldName = "TextField");
 
-		FormFields.editFieldName(fieldValue = ",-+!@#$%^*()=.?/;:{}[]\|");
+		FormFields.editFieldName(fieldValue = "_,-+!@#$%^*()=.?/;:{}[]\|");
 
 		Form.closeSidebar();
 
@@ -4252,20 +4252,20 @@ definition {
 		Navigator.gotoPage(pageName = "Form Page");
 
 		FormFields.viewTextField(
-			fieldLabel = ",-+!@#$%^*()=_.?/;:{}[]\|",
-			fieldName = "text");
+			fieldLabel = ",-+!@#$%^*()=.?/;:{}[]\|",
+			fieldName = "_");
 
 		FormFields.viewTextField(
 			fieldLabel = "Jump, She exclaimed!",
 			fieldName = "JumpSheexclaimed");
 
 		FormFields.editText(
-			fieldName = "text",
+			fieldName = "_",
 			fieldValue = "1,2,3.");
 
 		FormFields.editText(
 			fieldName = "JumpSheexclaimed",
-			fieldValue = ",-+!@#$%^*()=_.?/;:{}[]\|");
+			fieldValue = ",-+!@#$%^*()=.?/;:{}[]\|");
 
 		FormPortlet.submitSuccessfully();
 	}
