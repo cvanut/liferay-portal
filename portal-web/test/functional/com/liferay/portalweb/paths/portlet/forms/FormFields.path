@@ -41,7 +41,7 @@
 </tr>
 <tr>
 	<td>CHECKBOX_LABEL</td>
-	<td>//div[contains(@data-field-name,'${key_fieldName}')]//label | //div[contains(@class,'custom-control-input')]//div[contains(@data-field-name,'${key_fieldName}')]//label | //li[contains(.,'${key_fieldName}')]//label | //label[.//input[@type='checkbox' and contains(@id,'${key_fieldName}') or contains(@name,'${key_fieldName}')]] | //input[contains(@type,'checkbox')]//following-sibling::span[contains(.,'${key_fieldName}')]</td>
+	<td>//div[contains(@data-field-name,'${key_fieldName}')]//p | //div[contains(@class,'custom-control-input')]//div[contains(@data-field-name,'${key_fieldName}')]//label | //li[contains(.,'${key_fieldName}')]//label | //label[.//input[@type='checkbox' and contains(@id,'${key_fieldName}') or contains(@name,'${key_fieldName}')]] | //input[contains(@type,'checkbox')]//following-sibling::span[contains(.,'${key_fieldName}')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -223,7 +223,7 @@
 </tr>
 <tr>
 	<td>TEXT_LABEL_2</td>
-	<td>xpath=(//div[contains(@class,'form-group')][2]//label[contains(.,'${key_fieldLabel}')])</td>
+	<td>xpath=(//div[contains(@class,'form-group')][2]//p[contains(.,'${key_fieldLabel}')])</td>
 	<td></td>
 </tr>
 <tr>
@@ -249,7 +249,7 @@
 </tr>
 <tr>
 	<td>PARAGRAPH_TITLE</td>
-	<td>//div[(@class='form-group') and contains(@data-field-name,'${key_fieldName}')]/label</td>
+	<td>//div[(@class='form-group') and contains(@data-field-name,'${key_fieldName}')]/p</td>
 	<td></td>
 </tr>
 <tr>
