@@ -315,7 +315,7 @@
 <tr>
 	<td>DATA_PROVIDER_OUTPUT_PARAMETER_LABEL_FIELD</td>
 	<td>//div[contains(@data-field-name,'outputParameters')]//input[@type='text' and contains(@name,'outputParameters') and contains(@placeholder,'label')]</td>
-	<td></td>
+	<td></td> 
 </tr>
 <tr>
 	<td>DATA_PROVIDER_OUTPUT_PARAMETER_LABEL_FIELD_2</td>
