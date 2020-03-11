@@ -228,7 +228,7 @@
 </tr>
 <tr>
 	<td>TEXT_LABEL_2</td>
-	<td>xpath=(//div[contains(@class,'form-group')]//p[contains(.,'Text Field')])[2]</td>
+	<td>xpath=(//div[contains(@class,'form-group')]//p[contains(.,'${key_fieldLabel}')])[2]</td>
 	<td></td>
 </tr>
 <tr>
