@@ -242,7 +242,7 @@ definition {
 
 		Navigator.gotoPage(pageName = "Form Page");
 
-		Pause(locator1 = "6000");
+		Pause(locator1 = "7000");
 
 		FormFields.editText(
 			fieldName = "Value",
