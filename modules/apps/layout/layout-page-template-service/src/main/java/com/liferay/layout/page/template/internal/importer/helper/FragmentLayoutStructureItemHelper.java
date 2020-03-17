@@ -14,10 +14,13 @@
 
 package com.liferay.layout.page.template.internal.importer.helper;
 
+import com.liferay.document.library.util.DLURLHelperUtil;
 import com.liferay.fragment.contributor.FragmentCollectionContributorTracker;
+import com.liferay.fragment.model.FragmentCollection;
 import com.liferay.fragment.model.FragmentEntry;
 import com.liferay.fragment.model.FragmentEntryLink;
 import com.liferay.fragment.processor.FragmentEntryProcessorRegistry;
+import com.liferay.fragment.service.FragmentCollectionServiceUtil;
 import com.liferay.fragment.service.FragmentEntryLinkLocalServiceUtil;
 import com.liferay.fragment.service.FragmentEntryLocalServiceUtil;
 import com.liferay.fragment.validator.FragmentEntryValidator;
@@ -26,6 +29,7 @@ import com.liferay.layout.util.structure.LayoutStructure;
 import com.liferay.layout.util.structure.LayoutStructureItem;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
@@ -33,6 +37,8 @@ import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Layout;
+import com.liferay.portal.kernel.portletfilerepository.PortletFileRepositoryUtil;
+import com.liferay.portal.kernel.repository.model.FileEntry;
 import com.liferay.portal.kernel.service.ServiceContextThreadLocal;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -43,6 +49,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -77,6 +85,37 @@ public class FragmentLayoutStructureItemHelper
 			fragmentEntryLink.getFragmentEntryLinkId(), parentItemId, position);
 	}
 
+	private static Map<String, String> _getConfigurationTypes(
+			String configuration)
+		throws JSONException {
+
+		Map<String, String> configurationTypes = new HashMap<>();
+
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject(configuration);
+
+		JSONArray fieldSetsJSONArray = jsonObject.getJSONArray("fieldSets");
+
+		if (fieldSetsJSONArray == null) {
+			return configurationTypes;
+		}
+
+		for (int i = 0; i < fieldSetsJSONArray.length(); i++) {
+			JSONObject fieldsJSONObject = fieldSetsJSONArray.getJSONObject(i);
+
+			JSONArray fieldsJSONArray = fieldsJSONObject.getJSONArray("fields");
+
+			for (int j = 0; j < fieldsJSONArray.length(); j++) {
+				JSONObject fieldJSONObject = fieldsJSONArray.getJSONObject(j);
+
+				configurationTypes.put(
+					fieldJSONObject.getString("name"),
+					fieldJSONObject.getString("type"));
+			}
+		}
+
+		return configurationTypes;
+	}
+
 	private static Map<String, String> _getEditableTypes(String html) {
 		Map<String, String> editableTypes = new HashMap<>();
 
@@ -109,7 +148,7 @@ public class FragmentLayoutStructureItemHelper
 		Map<String, Object> fragmentDefinitionMap =
 			(Map<String, Object>)definitionMap.get("fragment");
 
-		String fragmentKey = (String)fragmentDefinitionMap.get("fragmentKey");
+		String fragmentKey = (String)fragmentDefinitionMap.get("key");
 
 		if (Validator.isNull(fragmentKey)) {
 			return null;
@@ -133,9 +172,13 @@ public class FragmentLayoutStructureItemHelper
 			configuration = fragmentEntry.getConfiguration();
 		}
 
+		FragmentCollection fragmentCollection =
+			FragmentCollectionServiceUtil.fetchFragmentCollection(
+				fragmentEntry.getFragmentCollectionId());
+
 		JSONObject defaultEditableValuesJSONObject =
 			fragmentEntryProcessorRegistry.getDefaultEditableValuesJSONObject(
-				html, configuration);
+				_replaceResources(fragmentCollection, html), configuration);
 
 		Map<String, String> editableTypes = _getEditableTypes(html);
 
@@ -156,8 +199,12 @@ public class FragmentLayoutStructureItemHelper
 				editableFragmentEntryProcessorJSONObject);
 		}
 
+		Map<String, String> configurationTypes = _getConfigurationTypes(
+			configuration);
+
 		JSONObject freeMarkerFragmentEntryProcessorJSONObject =
 			_toFreeMarkerFragmentEntryProcessorJSONObject(
+				configurationTypes,
 				(Map<String, Object>)definitionMap.get("fragmentConfig"));
 
 		fragmentEntryValidator.validateConfigurationValues(
@@ -324,6 +371,37 @@ public class FragmentLayoutStructureItemHelper
 		return fragmentEntry;
 	}
 
+	private String _replaceResources(
+			FragmentCollection fragmentCollection, String html)
+		throws PortalException {
+
+		if (fragmentCollection == null) {
+			return html;
+		}
+
+		Matcher matcher = _pattern.matcher(html);
+
+		while (matcher.find()) {
+			FileEntry fileEntry =
+				PortletFileRepositoryUtil.fetchPortletFileEntry(
+					fragmentCollection.getGroupId(),
+					fragmentCollection.getResourcesFolderId(),
+					matcher.group(1));
+
+			String fileEntryURL = StringPool.BLANK;
+
+			if (fileEntry != null) {
+				fileEntryURL = DLURLHelperUtil.getDownloadURL(
+					fileEntry, fileEntry.getFileVersion(), null,
+					StringPool.BLANK, false, false);
+			}
+
+			html = StringUtil.replace(html, matcher.group(), fileEntryURL);
+		}
+
+		return html;
+	}
+
 	private JSONObject _toEditableFragmentEntryProcessorJSONObject(
 		Map<String, String> editableTypes, List<Object> fragmentFields) {
 
@@ -388,6 +466,7 @@ public class FragmentLayoutStructureItemHelper
 	}
 
 	private JSONObject _toFreeMarkerFragmentEntryProcessorJSONObject(
+		Map<String, String> configurationTypes,
 		Map<String, Object> fragmentConfigMap) {
 
 		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
@@ -398,7 +477,16 @@ public class FragmentLayoutStructureItemHelper
 
 		for (Map.Entry<String, Object> entry : fragmentConfigMap.entrySet()) {
 			if (entry.getValue() instanceof String) {
-				jsonObject.put(entry.getKey(), entry.getValue());
+				String type = configurationTypes.get(entry.getKey());
+
+				if (Objects.equals(type, "colorPalette")) {
+					jsonObject.put(
+						entry.getKey(),
+						JSONUtil.put("color", entry.getValue()));
+				}
+				else {
+					jsonObject.put(entry.getKey(), entry.getValue());
+				}
 			}
 			else if (entry.getValue() instanceof HashMap) {
 				Map<String, Object> childFragmentConfigMap =
@@ -407,7 +495,7 @@ public class FragmentLayoutStructureItemHelper
 				jsonObject.put(
 					entry.getKey(),
 					_toFreeMarkerFragmentEntryProcessorJSONObject(
-						childFragmentConfigMap));
+						configurationTypes, childFragmentConfigMap));
 			}
 		}
 
@@ -416,5 +504,8 @@ public class FragmentLayoutStructureItemHelper
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		FragmentLayoutStructureItemHelper.class);
+
+	private static final Pattern _pattern = Pattern.compile(
+		"\\[resources:(.+?)\\]");
 
 }

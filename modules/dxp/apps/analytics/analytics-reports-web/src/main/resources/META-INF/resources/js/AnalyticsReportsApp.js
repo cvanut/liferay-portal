@@ -13,7 +13,9 @@ import React from 'react';
 
 import BasicInformation from './components/BasicInformation';
 import Chart from './components/Chart';
+import Hint from './components/Hint';
 import TotalCount from './components/TotalCount';
+import TrafficSources from './components/TrafficSources';
 import APIService from './utils/APIService';
 import {numberFormat} from './utils/numberFormat';
 
@@ -60,7 +62,7 @@ export default function({context, props}) {
 	}
 
 	return (
-		<div className="p-3">
+		<div className="overflow-hidden p-3">
 			<BasicInformation
 				authorName={authorName}
 				languageTag={languageTag}
@@ -68,8 +70,12 @@ export default function({context, props}) {
 				title={title}
 			/>
 
+			<h5 className="mt-4 sheet-subtitle text-secondary">
+				{Liferay.Language.get('views-and-reads')}
+			</h5>
+
 			<TotalCount
-				className="mt-4"
+				className="mt-2"
 				dataProvider={_handleTotalViews}
 				label={Liferay.Util.sub(Liferay.Language.get('total-views'))}
 				popoverHeader={Liferay.Language.get('total-views')}
@@ -79,7 +85,7 @@ export default function({context, props}) {
 			/>
 
 			<TotalCount
-				className="mt-2"
+				className="mb-3 mt-2"
 				dataProvider={_handleTotalReads}
 				label={Liferay.Util.sub(Liferay.Language.get('total-reads'))}
 				popoverHeader={Liferay.Language.get('total-reads')}
@@ -88,14 +94,25 @@ export default function({context, props}) {
 				)}
 			/>
 
-			<hr />
-
 			<Chart
 				dataProviders={[getHistoricalViews, getHistoricalReads]}
 				defaultTimeSpanOption={defaultTimeSpanKey}
 				languageTag={languageTag}
 				publishDate={publishDate}
 				timeSpanOptions={timeSpans}
+			/>
+
+			<h5 className="mt-4 sheet-subtitle text-secondary">
+				{Liferay.Language.get('traffic-sources')}
+				<Hint
+					message={Liferay.Language.get('traffic-sources-help')}
+					title={Liferay.Language.get('traffic-sources')}
+				/>
+			</h5>
+
+			<TrafficSources
+				dataProvider={api.getTrafficSources}
+				languageTag={languageTag}
 			/>
 		</div>
 	);

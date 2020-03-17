@@ -255,6 +255,11 @@ public class DepotGroupItemSelectorView
 			}
 		}
 
+		@Override
+		public boolean isShowBreadcrumb() {
+			return false;
+		}
+
 		private final DepotGroupItemSelectorCriterion
 			_depotGroupItemSelectorCriterion;
 		private HttpServletRequest _httpServletRequest;

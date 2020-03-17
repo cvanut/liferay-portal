@@ -60,11 +60,44 @@ function APIService({endpoints, namespace, page}) {
 		});
 	}
 
+	function getTrafficSources() {
+		// TODO remove frontend mock
+		return new Promise(resolve =>
+			setTimeout(
+				() =>
+					resolve({
+						analyticsReportsTrafficSources: [
+							{
+								helpMessage: Liferay.Language.get(
+									'this-number-refers-to-the-volume-of-people-that-find-your-page-through-a-search-engine'
+								),
+								name: 'organic',
+								share: 0.1,
+								title: Liferay.Language.get('organic'),
+								value: 32178,
+							},
+							{
+								helpMessage: Liferay.Language.get(
+									'this-number-refers-to-the-volume-of-people-that-find-your-page-through-paid-keywords'
+								),
+								name: 'paid',
+								share: 0.9,
+								title: Liferay.Language.get('paid'),
+								value: 278256,
+							},
+						],
+					}),
+				300
+			)
+		);
+	}
+
 	return {
 		getHistoricalReads,
 		getHistoricalViews,
 		getTotalReads,
 		getTotalViews,
+		getTrafficSources,
 	};
 }
 

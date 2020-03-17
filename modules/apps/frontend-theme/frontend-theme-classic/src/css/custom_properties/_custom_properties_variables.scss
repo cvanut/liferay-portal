@@ -47,6 +47,7 @@ $theme-colors-cp: map-deep-merge(
 	--gray-600: #{$gray-600};
 	--gray-700: #{$gray-700};
 	--gray-800: #{$gray-800};
+	--gray-900: #{$gray-900};
 	--black: #{$black};
 	--transparent: transparent;
 
@@ -256,10 +257,20 @@ $theme-colors-cp: map-deep-merge(
 
 	// Nav and Navbar
 
-	--nav-font-size: var(--navbar-font-size);
+	--navbar-active-color: var(--gray-900);
+	--navbar-brand-color: var(--navbar-active-color);
+	--navbar-brand-font-size: var(--font-size-lg);
+	--navbar-color: var(--gray-600);
 	--navbar-font-size: var(--font-size-sm);
+	--navbar-hover-color: var(--navbar-color);
+	--navbar-light-active-color: var(--gray-900);
+	--navbar-light-brand-hover-color: var(--navbar-light-active-color);
+	--navbar-light-hover-color: var(--gray-600);
 
+	--nav-font-size: var(--navbar-font-size);
+	--nav-link-active-color: inherit;
 	--nav-link-color: inherit;
+	--nav-link-hover-color: inherit;
 	--nav-link-padding-x: calc(var(--spacer) * #{$spacer});
 	--nav-link-padding-y: calc(var(--spacer) * #{$nav-link-padding-y});
 
@@ -303,4 +314,25 @@ $theme-colors-cp: map-deep-merge(
 	--table-list-divider-color: var(--table-list-color);
 	--table-list-divider-padding-x: #{$table-list-divider-padding-x};
 	--table-list-divider-padding-y: #{$table-list-divider-padding-y};
+
+	// List group
+
+	--list-group-bg: var(--white);
+	--list-group-border-color: var(--gray-300);
+	--list-group-border-radius: var(--border-radius);
+	--list-group-border-width: 0.0625rem;
+	--list-group-color: var(--gray-600);
+
+	--list-group-active-bg: var(--white);
+	--list-group-active-border-color: var(--gray-300);
+	--list-group-active-color: var(--gray-600);
+
+	--list-group-font-size: var(--font-size-sm);
+	--list-group-item-padding-x: #{$list-group-item-padding-x};
+	--list-group-item-padding-y: #{$list-group-item-padding-y};
+
+	--list-group-header-bg: var(--gray-100);
+	--list-group-header-color: var(--gray-600);
+	--list-group-header-padding-x: #{$list-group-header-padding-x};
+	--list-group-header-padding-y: #{$list-group-header-padding-y};
 }

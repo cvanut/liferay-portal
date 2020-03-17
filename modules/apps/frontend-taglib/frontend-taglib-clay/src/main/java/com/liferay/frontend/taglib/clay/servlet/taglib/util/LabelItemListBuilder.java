@@ -15,6 +15,7 @@
 package com.liferay.frontend.taglib.clay.servlet.taglib.util;
 
 import com.liferay.petra.function.UnsafeConsumer;
+import com.liferay.petra.function.UnsafeSupplier;
 
 /**
  * @author Hugo Huijser
@@ -29,12 +30,37 @@ public class LabelItemListBuilder {
 		return labelItemListWrapper.add(unsafeConsumer);
 	}
 
+	public static LabelItemListWrapper add(
+		UnsafeSupplier<Boolean, Exception> unsafeSupplier,
+		UnsafeConsumer<LabelItem, Exception> unsafeConsumer) {
+
+		LabelItemListWrapper labelItemListWrapper = new LabelItemListWrapper();
+
+		return labelItemListWrapper.add(unsafeSupplier, unsafeConsumer);
+	}
+
 	public static final class LabelItemListWrapper {
 
 		public LabelItemListWrapper add(
 			UnsafeConsumer<LabelItem, Exception> unsafeConsumer) {
 
 			_labelItemList.add(unsafeConsumer);
+
+			return this;
+		}
+
+		public LabelItemListWrapper add(
+			UnsafeSupplier<Boolean, Exception> unsafeSupplier,
+			UnsafeConsumer<LabelItem, Exception> unsafeConsumer) {
+
+			try {
+				if (unsafeSupplier.get()) {
+					_labelItemList.add(unsafeConsumer);
+				}
+			}
+			catch (Exception exception) {
+				throw new RuntimeException(exception);
+			}
 
 			return this;
 		}

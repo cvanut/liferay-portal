@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.workflow.metrics.rest.resource.v1_0.ProcessResource;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.osgi.service.component.ComponentServiceObjects;
@@ -92,7 +93,7 @@ public class ProcessResourceFactoryImpl implements ProcessResource.Factory {
 	private Object _invoke(
 			Method method, Object[] arguments, boolean checkPermissions,
 			User user)
-		throws Exception {
+		throws Throwable {
 
 		String name = PrincipalThreadLocal.getName();
 
@@ -101,8 +102,14 @@ public class ProcessResourceFactoryImpl implements ProcessResource.Factory {
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 
-		PermissionThreadLocal.setPermissionChecker(
-			_permissionCheckerFactory.create(user));
+		if (checkPermissions) {
+			PermissionThreadLocal.setPermissionChecker(
+				_defaultPermissionCheckerFactory.create(user));
+		}
+		else {
+			PermissionThreadLocal.setPermissionChecker(
+				_liberalPermissionCheckerFactory.create(user));
+		}
 
 		ProcessResource processResource = _componentServiceObjects.getService();
 
@@ -114,6 +121,9 @@ public class ProcessResourceFactoryImpl implements ProcessResource.Factory {
 
 		try {
 			return method.invoke(processResource, arguments);
+		}
+		catch (InvocationTargetException invocationTargetException) {
+			throw invocationTargetException.getTargetException();
 		}
 		finally {
 			_componentServiceObjects.ungetService(processResource);
@@ -131,7 +141,10 @@ public class ProcessResourceFactoryImpl implements ProcessResource.Factory {
 	private ComponentServiceObjects<ProcessResource> _componentServiceObjects;
 
 	@Reference
-	private PermissionCheckerFactory _permissionCheckerFactory;
+	private PermissionCheckerFactory _defaultPermissionCheckerFactory;
+
+	@Reference(target = "(permission.checker.type=liberal)")
+	private PermissionCheckerFactory _liberalPermissionCheckerFactory;
 
 	@Reference
 	private UserLocalService _userLocalService;

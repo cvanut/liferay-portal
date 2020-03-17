@@ -12,15 +12,24 @@
  * details.
  */
 
-package com.liferay.portal.search.elasticsearch7.internal.connection;
+package com.liferay.layout.page.template.headless.delivery.dto.v1_0;
+
+import com.liferay.headless.delivery.dto.v1_0.MasterPage;
+import com.liferay.layout.page.template.model.LayoutPageTemplateEntry;
 
 /**
- * @author André de Oliveira
+ * @author Rubén Pulido
  */
-public class MissingOperationModeException extends IllegalArgumentException {
+public class MasterPageConverterUtil {
 
-	public MissingOperationModeException(OperationMode operationMode) {
-		super("Operation mode " + operationMode);
+	public static MasterPage toMasterPage(
+		LayoutPageTemplateEntry layoutPageTemplateEntry) {
+
+		return new MasterPage() {
+			{
+				name = layoutPageTemplateEntry.getName();
+			}
+		};
 	}
 
 }

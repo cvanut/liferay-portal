@@ -149,9 +149,15 @@ currentURLObj.setParameter("historyKey", renderResponse.getNamespace() + "asset-
 							'" href="javascript:;"><%= UnicodeFormatter.toString(removeDepotGroupIcon) %></a>'
 					);
 
-					searchContainer.addRow(rowColumns, itemValue.classPK);
+					var searchContainerData = searchContainer.getData();
 
-					searchContainer.updateDataStore();
+					var itemsValues = searchContainerData.split(',');
+
+					if (!itemsValues.includes(itemValue.classPK)) {
+						searchContainer.addRow(rowColumns, itemValue.classPK);
+
+						searchContainer.updateDataStore();
+					}
 
 					addDepotGroupIds.push(itemValue.classPK);
 

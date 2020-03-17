@@ -13,7 +13,6 @@
  */
 
 import {ClayInput} from '@clayui/form';
-import PropTypes from 'prop-types';
 import React, {useCallback, useState} from 'react';
 
 import {ImageSelector} from '../../../common/components/ImageSelector';
@@ -25,7 +24,7 @@ import {EDITABLE_TYPES} from '../../config/constants/editableTypes';
 import selectEditableValueContent from '../../selectors/selectEditableValueContent';
 import selectPrefixedSegmentsExperienceId from '../../selectors/selectPrefixedSegmentsExperienceId';
 import {useDispatch, useSelector} from '../../store/index';
-import updateEditableValues from '../../thunks/updateEditableValues';
+import updateEditableValuesThunk from '../../thunks/updateEditableValues';
 
 export function ImagePropertiesPanel({item}) {
 	const {editableId, editableType, fragmentEntryLinkId} = item;
@@ -54,13 +53,13 @@ export function ImagePropertiesPanel({item}) {
 			state,
 			fragmentEntryLinkId,
 			editableId,
-			EDITABLE_FRAGMENT_ENTRY_PROCESSOR
+			processoryKey
 		);
 
 		return url === editableValue.defaultValue ? '' : url;
 	});
 
-	const updateRowConfig = useCallback(
+	const updateEditableValues = useCallback(
 		newConfig => {
 			const editableValues =
 				state.fragmentEntryLinks[fragmentEntryLinkId].editableValues;
@@ -81,7 +80,7 @@ export function ImagePropertiesPanel({item}) {
 			};
 
 			dispatch(
-				updateEditableValues({
+				updateEditableValuesThunk({
 					editableValues: nextEditableValues,
 					fragmentEntryLinkId,
 					segmentsExperienceId: state.segmentsExperienceId,
@@ -99,7 +98,10 @@ export function ImagePropertiesPanel({item}) {
 		]
 	);
 
-	const [debounceUpdateRowConfig] = useDebounceCallback(updateRowConfig, 500);
+	const [debounceUpdateEditableValues] = useDebounceCallback(
+		updateEditableValues,
+		500
+	);
 
 	const onImageChange = (imageTitle, imageUrl) => {
 		const {editableValues} = state.fragmentEntryLinks[fragmentEntryLinkId];
@@ -114,7 +116,13 @@ export function ImagePropertiesPanel({item}) {
 
 		let nextEditableValue = {};
 
-		const nextEditableValueConfig = {...editableValue.config};
+		setImageDescription('');
+
+		const nextEditableValueConfig = {
+			...editableValue.config,
+			alt: '',
+			imageTitle: '',
+		};
 
 		if (imageTitle) {
 			nextEditableValueConfig.imageTitle = imageTitle;
@@ -150,7 +158,7 @@ export function ImagePropertiesPanel({item}) {
 		};
 
 		dispatch(
-			updateEditableValues({
+			updateEditableValuesThunk({
 				editableValues: nextEditableValues,
 				fragmentEntryLinkId,
 				segmentsExperienceId: state.segmentsExperienceId,
@@ -177,7 +185,7 @@ export function ImagePropertiesPanel({item}) {
 						onChange={event => {
 							setImageDescription(event.target.value);
 
-							debounceUpdateRowConfig({
+							debounceUpdateEditableValues({
 								alt: event.target.value,
 							});
 						}}
@@ -192,10 +200,5 @@ export function ImagePropertiesPanel({item}) {
 }
 
 ImagePropertiesPanel.propTypes = {
-	item: getEditableItemPropTypes({
-		config: PropTypes.shape({
-			alt: PropTypes.string,
-			imageTitle: PropTypes.string,
-		}),
-	}),
+	item: getEditableItemPropTypes().isRequired,
 };

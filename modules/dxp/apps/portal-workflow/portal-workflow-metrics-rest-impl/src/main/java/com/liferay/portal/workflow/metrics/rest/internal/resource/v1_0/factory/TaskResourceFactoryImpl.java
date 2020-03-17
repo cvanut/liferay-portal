@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.workflow.metrics.rest.resource.v1_0.TaskResource;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.osgi.service.component.ComponentServiceObjects;
@@ -92,7 +93,7 @@ public class TaskResourceFactoryImpl implements TaskResource.Factory {
 	private Object _invoke(
 			Method method, Object[] arguments, boolean checkPermissions,
 			User user)
-		throws Exception {
+		throws Throwable {
 
 		String name = PrincipalThreadLocal.getName();
 
@@ -101,8 +102,14 @@ public class TaskResourceFactoryImpl implements TaskResource.Factory {
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 
-		PermissionThreadLocal.setPermissionChecker(
-			_permissionCheckerFactory.create(user));
+		if (checkPermissions) {
+			PermissionThreadLocal.setPermissionChecker(
+				_defaultPermissionCheckerFactory.create(user));
+		}
+		else {
+			PermissionThreadLocal.setPermissionChecker(
+				_liberalPermissionCheckerFactory.create(user));
+		}
 
 		TaskResource taskResource = _componentServiceObjects.getService();
 
@@ -114,6 +121,9 @@ public class TaskResourceFactoryImpl implements TaskResource.Factory {
 
 		try {
 			return method.invoke(taskResource, arguments);
+		}
+		catch (InvocationTargetException invocationTargetException) {
+			throw invocationTargetException.getTargetException();
 		}
 		finally {
 			_componentServiceObjects.ungetService(taskResource);
@@ -131,7 +141,10 @@ public class TaskResourceFactoryImpl implements TaskResource.Factory {
 	private ComponentServiceObjects<TaskResource> _componentServiceObjects;
 
 	@Reference
-	private PermissionCheckerFactory _permissionCheckerFactory;
+	private PermissionCheckerFactory _defaultPermissionCheckerFactory;
+
+	@Reference(target = "(permission.checker.type=liberal)")
+	private PermissionCheckerFactory _liberalPermissionCheckerFactory;
 
 	@Reference
 	private UserLocalService _userLocalService;

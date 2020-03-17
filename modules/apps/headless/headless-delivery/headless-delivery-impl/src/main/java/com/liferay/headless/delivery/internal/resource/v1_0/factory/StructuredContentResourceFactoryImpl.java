@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.service.CompanyLocalService;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.osgi.service.component.ComponentServiceObjects;
@@ -93,7 +94,7 @@ public class StructuredContentResourceFactoryImpl
 	private Object _invoke(
 			Method method, Object[] arguments, boolean checkPermissions,
 			User user)
-		throws Exception {
+		throws Throwable {
 
 		String name = PrincipalThreadLocal.getName();
 
@@ -102,8 +103,14 @@ public class StructuredContentResourceFactoryImpl
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 
-		PermissionThreadLocal.setPermissionChecker(
-			_permissionCheckerFactory.create(user));
+		if (checkPermissions) {
+			PermissionThreadLocal.setPermissionChecker(
+				_defaultPermissionCheckerFactory.create(user));
+		}
+		else {
+			PermissionThreadLocal.setPermissionChecker(
+				_liberalPermissionCheckerFactory.create(user));
+		}
 
 		StructuredContentResource structuredContentResource =
 			_componentServiceObjects.getService();
@@ -116,6 +123,9 @@ public class StructuredContentResourceFactoryImpl
 
 		try {
 			return method.invoke(structuredContentResource, arguments);
+		}
+		catch (InvocationTargetException invocationTargetException) {
+			throw invocationTargetException.getTargetException();
 		}
 		finally {
 			_componentServiceObjects.ungetService(structuredContentResource);
@@ -134,7 +144,10 @@ public class StructuredContentResourceFactoryImpl
 		_componentServiceObjects;
 
 	@Reference
-	private PermissionCheckerFactory _permissionCheckerFactory;
+	private PermissionCheckerFactory _defaultPermissionCheckerFactory;
+
+	@Reference(target = "(permission.checker.type=liberal)")
+	private PermissionCheckerFactory _liberalPermissionCheckerFactory;
 
 	@Reference
 	private UserLocalService _userLocalService;
