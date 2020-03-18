@@ -138,6 +138,8 @@ definition {
 			fieldLabel = "Text Field",
 			fieldName = "TextField");
 
+		Pause(locator1 = "5000");
+
 		FormFields.editText(
 			fieldName = "TextField",
 			fieldValue = "test");
@@ -241,6 +243,8 @@ definition {
 		PortletEntry.save();
 
 		Navigator.gotoPage(pageName = "Form Page");
+
+		Pause(locator1 = "5000");
 
 		FormFields.editText(
 			fieldName = "Value",

@@ -3228,6 +3228,8 @@ definition {
 			fieldLabel = "Text",
 			fieldName = "Text");
 
+		Pause(locator1 = "5000");
+
 		FormFields.editText(
 			fieldName = "Text",
 			fieldValue = "Text Field Value");
