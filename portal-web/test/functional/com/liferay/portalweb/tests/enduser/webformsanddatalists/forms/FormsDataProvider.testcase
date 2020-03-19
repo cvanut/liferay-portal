@@ -129,9 +129,9 @@ definition {
 
 		FormFields.editTextWithDataProvider(
 			fieldName = "TextFieldWithAutocomplete",
-			fieldValue = "Bra");
+			fieldValue = "United");
 
-		FormFields.selectAutoCompleteOption(autocompleteOption = "Brazil");
+		FormFields.selectAutoCompleteOption(autocompleteOption = "United States");
 
 		FormPortlet.submit();
 
@@ -146,7 +146,7 @@ definition {
 
 		FormsAdmin.viewFormTableEntry(
 			fieldLabel = "Text Field With Autocomplete",
-			fieldValue = "Brazil");
+			fieldValue = "United States");
 
 		Navigator.openURL();
 
@@ -181,10 +181,10 @@ definition {
 
 		FormFields.editText(
 			fieldName = "TextFieldWithAutocomplete",
-			fieldValue = "Br");
+			fieldValue = "Un");
 
 		AssertElementNotPresent(
-			key_autocompleteOption = "Brazil",
+			key_autocompleteOption = "United States",
 			locator1 = "FormFields#AUTOCOMPLETE_OPTION");
 	}
 
