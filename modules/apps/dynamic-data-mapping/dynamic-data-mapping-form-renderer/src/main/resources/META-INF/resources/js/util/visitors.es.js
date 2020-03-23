@@ -110,14 +110,19 @@ class PagesVisitor {
 	}
 
 	visitFields(fn) {
+		const isFieldNode = node =>
+			Object.prototype.hasOwnProperty.call(node, 'fieldName');
+
 		const getChildren = node => {
-			return (
-				node.fields ||
-				node.nestedFields ||
-				node.rows ||
-				node.columns ||
-				[]
-			);
+			if (isFieldNode(node)) {
+				if (node.type === 'section') {
+					return node.nestedFields || [];
+				}
+
+				return [];
+			}
+
+			return node.fields || node.rows || node.columns || [];
 		};
 
 		const collection = [...this._pages];
@@ -125,10 +130,7 @@ class PagesVisitor {
 		while (collection.length) {
 			const node = collection.shift();
 
-			if (
-				Object.prototype.hasOwnProperty.call(node, 'fieldName') &&
-				fn(node)
-			) {
+			if (isFieldNode(node) && fn(node)) {
 				return true;
 			}
 
