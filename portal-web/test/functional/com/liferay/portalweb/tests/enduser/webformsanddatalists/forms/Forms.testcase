@@ -96,6 +96,7 @@ definition {
 
 	@priority = "5"
 	test AddElementSetsWithTranslation {
+		property portal.upstream = “quarantine”;
 		property test.name.skip.portal.instance = "Forms#AddElementSetsWithTranslation";
 		property testray.component.names = "Training";
 
@@ -1146,6 +1147,7 @@ definition {
 
 	@priority = "5"
 	test DeletePages {
+		portal.upstream = “quarantine”;
 		property test.name.skip.portal.instance = "Forms#DeletePages";
 		Navigator.openURL();
 
@@ -1347,6 +1349,7 @@ definition {
 
 	@priority = "4"
 	test EditAllFormFieldNames {
+		property portal.upstream = “quarantine”;
 		property test.name.skip.portal.instance = "Forms#EditAllFormFieldNames";
 		Navigator.openURL();
 
@@ -4057,6 +4060,7 @@ definition {
 	@description = "This is a use case for LPS-71485 and LPS-71512."
 	@priority = "2"
 	test ViewAltSuccessPagePagination {
+		property portal.upstream = “quarantine”;
 		property test.name.skip.portal.instance = "Forms#ViewAltSuccessPagePagination";
 		Navigator.openURL();
 
@@ -4123,6 +4127,7 @@ definition {
 	@description = "This is a use case for LPS-68182."
 	@priority = "3"
 	test ViewBlankLabelWhenAddingNewField {
+		property portal.upstream = “quarantine”;
 		property test.name.skip.portal.instance = "Forms#ViewBlankLabelWhenAddingNewField";
 		Navigator.openURL();
 
@@ -4419,6 +4424,7 @@ definition {
 	@priority = "4"
 	test ViewRepeatableTextFieldLabel {
 		property test.name.skip.portal.instance = "Forms#ViewRepeatableTextFieldLabel";
+		property portal.upstream = “quarantine”;
 		Navigator.openURL();
 
 		ProductMenu.gotoPortlet(
@@ -4509,6 +4515,7 @@ definition {
 	@description = "This is a use case for LPS-71072."
 	@priority = "5"
 	test ViewSuccessPage {
+		property portal.upstream = “quarantine”;
 		property test.name.skip.portal.instance = "Forms#ViewSuccessPage";
 		property testray.component.names = "Training";
 
