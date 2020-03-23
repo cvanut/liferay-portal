@@ -12,27 +12,11 @@
  * details.
  */
 
-package com.liferay.portal.search.elasticsearch7.internal.io;
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-import com.liferay.petra.string.StringBundler;
+import {stringToSlug} from '../utils/utils.es';
 
-import java.io.OutputStream;
-
-/**
- * @author Michael C. Han
- */
-public class StringOutputStream extends OutputStream {
-
-	@Override
-	public String toString() {
-		return _sb.toString();
-	}
-
-	@Override
-	public void write(int b) {
-		_sb.append(b);
-	}
-
-	private final StringBundler _sb = new StringBundler();
-
-}
+export default props => {
+	return <Link {...props} to={stringToSlug(props.to)} />;
+};

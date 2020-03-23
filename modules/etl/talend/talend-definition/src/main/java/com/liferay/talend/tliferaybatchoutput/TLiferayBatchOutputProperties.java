@@ -12,27 +12,18 @@
  * details.
  */
 
-package com.liferay.portal.search.elasticsearch6.internal.io;
+package com.liferay.talend.tliferaybatchoutput;
 
-import com.liferay.petra.string.StringBundler;
-
-import java.io.OutputStream;
+import com.liferay.talend.properties.batch.LiferayBatchOutputProperties;
 
 /**
- * @author Michael C. Han
+ * @author Igor Beslic
  */
-public class StringOutputStream extends OutputStream {
+public class TLiferayBatchOutputProperties
+	extends LiferayBatchOutputProperties {
 
-	@Override
-	public String toString() {
-		return _sb.toString();
+	public TLiferayBatchOutputProperties(String name) {
+		super(name);
 	}
-
-	@Override
-	public void write(int b) {
-		_sb.append(b);
-	}
-
-	private final StringBundler _sb = new StringBundler();
 
 }

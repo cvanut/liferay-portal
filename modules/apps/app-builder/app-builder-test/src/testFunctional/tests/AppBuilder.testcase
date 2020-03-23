@@ -1535,6 +1535,126 @@ definition {
 		AppBuilderAdmin.deleteEntry(itemName = "my custom object");
 	}
 
+	@description = "Delete fields from the Form View through the Delete options and assert its affect on other Form and Table views"
+	@priority = "5"
+	test DeleteFormViewFieldFromObject {
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "my custom object",
+			isCreatingFormView = "true",
+			isCreatingViaPlusIcon = "true");
+
+		FormViewBuilder.setName(formViewName = "My Form View 1");
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Text");
+		FormViewBuilder.closeSidebar();
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		AppBuilderAdmin.add();
+
+		TableViewBuilder.setName(tableViewName = "My Table View");
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Text");
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Select from List");
+
+		TableViewBuilder.save();
+
+		FormViewBuilder.switchToFormViewTab();
+		AppBuilderAdmin.add();
+
+		FormViewBuilder.setName(formViewName = "My Form View 2");
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Date");
+		FormViewBuilder.closeSidebar();
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Text");
+		FormViewBuilder.save();
+
+		FormViewBuilder.switchToFormViewTab();
+
+		AppBuilderAdmin.openItem(itemName = "My Form View 1");
+
+		FormViewBuilder.fieldEllipsisDelete(fieldLabel = "Text");
+
+		FormViewBuilder.validateDeleteUsedObjectMessage();
+		FormViewBuilder.validateUsedFormView(formViewName = "My Form View 1");
+		FormViewBuilder.validateUsedFormView(formViewName = "My Form View 2");
+		FormViewBuilder.validateUsedTableView(tableViewName = "My Table View");
+
+		FormViewBuilder.deleteButtonInDeleteFromObject();
+
+		FormViewBuilder.validateNoFieldLabel(fieldLabel = "Text");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Text");
+
+		FormViewBuilder.deleteFromObjectViaX(fieldName = "Select from List");
+
+		FormViewBuilder.validateDeleteUsedObjectMessage();
+		FormViewBuilder.validateUsedFormView(formViewName = "My Form View 1");
+		FormViewBuilder.validateUsedTableView(tableViewName = "My Table View");
+
+		FormViewBuilder.deleteButtonInDeleteFromObject();
+
+		FormViewBuilder.validateNoFieldLabel(fieldLabel = "Select from List");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Select from List");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Numeric");
+
+		FormViewBuilder.fieldEllipsisDelete(fieldLabel = "Numeric");
+
+		FormViewBuilder.validateDeleteObjectMessage();
+
+		FormViewBuilder.deleteButtonInDeleteFromObject();
+
+		FormViewBuilder.validateNoFieldLabel(fieldLabel = "Numeric");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Numeric");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
+
+		FormViewBuilder.deleteFromObjectViaX(fieldName = "Multiple Selection");
+
+		FormViewBuilder.validateDeleteObjectMessage();
+
+		FormViewBuilder.cancelButtonInDeleteFromObject();
+
+		FormViewBuilder.validateFieldLabel(fieldLabel = "Multiple Selection");
+		FormViewBuilder.validateObjectFieldName(fieldName = "Multiple Selection");
+
+		FormViewBuilder.deleteFromObjectViaX(fieldName = "Multiple Selection");
+
+		FormViewBuilder.validateDeleteObjectMessage();
+
+		FormViewBuilder.deleteButtonInDeleteFromObject();
+
+		FormViewBuilder.validateNoFieldLabel(fieldLabel = "Multiple Selection");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Multiple Selection");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.openItem(itemName = "My Form View 2");
+
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Text");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Select from List");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Numeric");
+		FormViewBuilder.validateNoObjectFieldName(fieldName = "Multiple Selection");
+
+		FormViewBuilder.validateFieldLabel(fieldLabel = "Date");
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		AppBuilderAdmin.openItem(itemName = "My Table View");
+
+		TableViewBuilder.validateNoColumnLabel(columnLabel = "Text");
+		TableViewBuilder.validateNoColumnLabelAtSidebar(columnLabel = "Text");
+
+		TableViewBuilder.validateNoColumnLabel(columnLabel = "Select from List");
+		TableViewBuilder.validateNoColumnLabelAtSidebar(columnLabel = "Select from List");
+
+		TableViewBuilder.validateColumnLabelAtSidebar(columnLabel = "Single Selection");
+	}
+
 	@description = "Delete an existing Form View with no active publishing through the kebab/action menu"
 	@priority = "5"
 	test DeleteFormViewThroughActionMenu {
@@ -2585,7 +2705,7 @@ definition {
 
 		//TODO: Remove this comment once LPS-110060 is fixed.
 
-		FormViewBuilder.addFromObjectField(fieldName = "Hobbies");
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Hobbies");
 
 		FormViewBuilder.setFieldLabel(fieldLabel = "Hobbies edited");
 
@@ -2594,13 +2714,13 @@ definition {
 			fieldName = "Hobbies edited");
 		*/
 
-		FormViewBuilder.addFromObjectField(fieldName = "Marital Status");
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Marital Status");
 		FormViewBuilder.validateFormMultipleSelectionField(
 			fieldLabel = "Marital Status 3",
 			fieldName = "Marital Status");
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Marital Status");
 
-		FormViewBuilder.addFromObjectField(fieldName = "Occupation");
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Occupation");
 		FormViewBuilder.validateSelectFromListField(
 			optionValue = "Occupation 2",
 			rowNumber = "2");
@@ -2610,10 +2730,10 @@ definition {
 			fieldLabel = "Testing Changed Name",
 			fieldName = "Nickname");
 
-		FormViewBuilder.addFromObjectField(fieldName = "Full name");
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Full name");
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Full name");
 
-		FormViewBuilder.addFromObjectField(fieldName = "Number of children");
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Number of children");
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Number of children");
 
 		FormViewBuilder.addFieldToObject(fieldName = "Text");
@@ -2622,7 +2742,7 @@ definition {
 
 		FormViewBuilder.searchObjectField(fieldValue = "Date of birth");
 		FormViewBuilder.validateSearchResult(fieldLabel = "Date of birth");
-		FormViewBuilder.addFromObjectField(fieldName = "Date of birth");
+		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "Date of birth");
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Date of birth");
 
 		FormViewBuilder.save();
