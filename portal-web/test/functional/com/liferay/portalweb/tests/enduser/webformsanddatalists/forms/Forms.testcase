@@ -4469,6 +4469,8 @@ definition {
 			fieldName = "TextField",
 			repeatableFieldNumber = "1");
 
+		Pause(locator1 = "2000");
+
 		FormFields.viewRepeatableTextFieldLabel(
 			fieldLabel = "Text Field",
 			fieldName = "TextField");
