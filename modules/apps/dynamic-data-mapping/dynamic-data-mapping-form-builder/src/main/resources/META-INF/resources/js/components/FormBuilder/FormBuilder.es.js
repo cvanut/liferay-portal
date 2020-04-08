@@ -12,8 +12,6 @@
  * details.
  */
 
-import '../SuccessPage/SuccessPage.es';
-
 import {PagesVisitor, compose} from 'dynamic-data-mapping-form-renderer';
 import FormRenderer from 'dynamic-data-mapping-form-renderer/js/components/FormRenderer/FormRenderer.es';
 import Component from 'metal-jsx';
@@ -82,23 +80,25 @@ class FormBuilderBase extends Component {
 			paginationMode,
 			portletNamespace,
 			spritemap,
+			successPageSettings,
+			view,
 		} = props;
 
 		return (
 			<div class="ddm-form-builder-wrapper">
 				<div class="container ddm-form-builder">
-					<div class="sheet">
-						<FormRenderer
-							activePage={activePage}
-							editable={true}
-							editingLanguageId={editingLanguageId}
-							pages={this.preparePagesForRender(pages)}
-							paginationMode={paginationMode}
-							portletNamespace={portletNamespace}
-							ref="FormRenderer"
-							spritemap={spritemap}
-						/>
-					</div>
+					<FormRenderer
+						activePage={activePage}
+						editable={true}
+						editingLanguageId={editingLanguageId}
+						pages={this.preparePagesForRender(pages)}
+						paginationMode={paginationMode}
+						portletNamespace={portletNamespace}
+						ref="FormRenderer"
+						spritemap={spritemap}
+						successPageSettings={successPageSettings}
+						view={view}
+					/>
 				</div>
 			</div>
 		);
@@ -187,6 +187,15 @@ FormBuilderBase.PROPS = {
 	 */
 
 	view: Config.string(),
+
+	/**
+	 * @default undefined
+	 * @instance
+	 * @memberof FormBuilder
+	 * @type {?string}
+	 */
+
+	viewMode: Config.bool(),
 };
 
 export default compose(
