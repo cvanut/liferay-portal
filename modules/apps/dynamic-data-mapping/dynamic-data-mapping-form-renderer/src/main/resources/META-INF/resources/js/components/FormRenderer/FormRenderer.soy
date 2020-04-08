@@ -19,11 +19,18 @@
 	{@param? showSubmitButton: bool}
 	{@param? strings: map<string, string>}
 	{@param? submitLabel: string}
+	{@param? view: string}
+	{@param? viewMode: bool}
+	{@param? successPageSettings: ?}
 
 	{if $displayable}
 		{let $currentPaginationMode: $paginationMode ?: 'wizard' /}
 		{let $currentPage: $activePage ?: 0 /}
 		{let $total: length($pages) /}
+
+	{let $sheet: $view == 'fieldSets' ? 'sheet' : '' /}
+
+	<div class="{$sheet}">
 
 		{let $classes kind="text"}
 			lfr-ddm-form-container position-relative
@@ -41,7 +48,6 @@
 					{param activePage: $activePage /}
 					{param cancelLabel: $cancelLabel ?: 'cancel' /}
 					{param editable: $editable /}
-					{param editingLanguageId: $editingLanguageId /}
 					{param events: [
 						'fieldBlurred': $_handleFieldBlurred,
 						'fieldClicked': $_handleFieldClicked,
@@ -62,8 +68,12 @@
 					{param strings: $strings /}
 					{param submitLabel: $submitLabel ?: 'submit' /}
 					{param total: $total /}
+					{param viewMode: $viewMode /}
 				{/call}
 			{else}
+				{if $view != 'fieldSets'}
+					<div class="horizontal-line"></div>
+				{/if}
 				{foreach $page in $pages}
 					{call PageRenderer.render}
 						{param activePage: $activePage /}
@@ -89,9 +99,13 @@
 						{param strings: $strings /}
 						{param submitLabel: $submitLabel ?: 'submit' /}
 						{param total: $total /}
+						{param view: $view /}
+						{param viewMode: $viewMode /}
+						{param successPageSettings: $successPageSettings /}
 					{/call}
 				{/foreach}
 			{/if}
 		</div>
 	{/if}
+	</div>
 {/template}
