@@ -434,9 +434,13 @@ class LayoutProvider extends Component {
 		});
 	}
 
-	_handlePageReset() {
+	_handlePageReset({pageIndex}) {
+		const {pages} = this.state;
+
+		pages.splice(pageIndex, 1, this.createNewPage());
+
 		this.setState({
-			pages: [this.createNewPage()],
+			pages,
 		});
 	}
 
