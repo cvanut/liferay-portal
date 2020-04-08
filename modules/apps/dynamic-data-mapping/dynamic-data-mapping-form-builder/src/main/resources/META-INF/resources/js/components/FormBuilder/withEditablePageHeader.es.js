@@ -15,6 +15,7 @@
 import './EditablePageHeader.soy';
 
 import {PagesVisitor} from 'dynamic-data-mapping-form-renderer';
+import dom from 'metal-dom';
 import {EventHandler} from 'metal-events';
 import Component from 'metal-jsx';
 
@@ -77,17 +78,30 @@ const withEditablePageHeader = ChildComponent => {
 			);
 		}
 
+		_getPageNumber(node) {
+			let pageNumber;
+
+			const element = dom.closest(node, '[data-ddm-page]');
+
+			if (element) {
+				pageNumber = parseInt(element.dataset.ddmPage, 10);
+			}
+
+			return pageNumber;
+		}
+
 		_handlePageDescriptionChanged(event) {
-			const {activePage, editingLanguageId, pages} = this.props;
-			const {delegateTarget} = event;
+			const {editingLanguageId, pages} = this.props;
+			const {delegateTarget, target} = event;
 			const {dispatch} = this.context;
+			const currentPage = this._getPageNumber(target);
 			const value = delegateTarget.value;
 			const visitor = new PagesVisitor(pages);
 
 			dispatch(
 				'pagesUpdated',
 				visitor.mapPages((page, pageIndex) => {
-					if (pageIndex === activePage) {
+					if (pageIndex === currentPage) {
 						page = {
 							...page,
 							description: value,
@@ -104,16 +118,17 @@ const withEditablePageHeader = ChildComponent => {
 		}
 
 		_handlePageTitleChanged(event) {
-			const {activePage, editingLanguageId, pages} = this.props;
-			const {delegateTarget} = event;
+			const {editingLanguageId, pages} = this.props;
+			const {delegateTarget, target} = event;
 			const {dispatch} = this.context;
+			const currentPage = this._getPageNumber(target);
 			const value = delegateTarget.value;
 			const visitor = new PagesVisitor(pages);
 
 			dispatch(
 				'pagesUpdated',
 				visitor.mapPages((page, pageIndex) => {
-					if (pageIndex === activePage) {
+					if (pageIndex === currentPage) {
 						page = {
 							...page,
 							localizedTitle: {
