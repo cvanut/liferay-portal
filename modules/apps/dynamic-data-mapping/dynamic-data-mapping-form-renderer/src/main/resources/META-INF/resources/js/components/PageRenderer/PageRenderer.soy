@@ -48,29 +48,29 @@
 	{/let}
 
 	<div class="page">
-	{delcall PageRenderer.container variant="$contentRenderer"}
-		{param _handleFieldBlurred: $_handleFieldBlurred /}
-		{param _handleFieldClicked: $_handleFieldClicked /}
-		{param _handleFieldEdited: $_handleFieldEdited /}
-		{param _handleFieldFocused: $_handleFieldFocused /}
-		{param activePage: $activePage ?: 0 /}
-		{param contentRenderer: $contentRenderer /}
-		{param editable: $editable /}
-		{param editingLanguageId: $editingLanguageId /}
-		{param empty: $empty /}
-		{param page: $page /}
-		{param pageIndex: $pageIndex ?: 0 /}
-		{param pages: $pages /}
-		{param paginationMode: $paginationMode /}
-		{param readOnly: $readOnly /}
-		{param showSubmitButton: $showSubmitButton /}
-		{param spritemap: $spritemap /}
-		{param strings: $strings /}
-		{param submitLabel: $submitLabel /}
-		{param total: $total /}
+		{delcall PageRenderer.container variant="$contentRenderer"}
+			{param _handleFieldBlurred: $_handleFieldBlurred /}
+			{param _handleFieldClicked: $_handleFieldClicked /}
+			{param _handleFieldEdited: $_handleFieldEdited /}
+			{param _handleFieldFocused: $_handleFieldFocused /}
+			{param activePage: $activePage ?: 0 /}
+			{param contentRenderer: $contentRenderer /}
+			{param editable: $editable /}
+			{param editingLanguageId: $editingLanguageId /}
+			{param empty: $empty /}
+			{param page: $page /}
+			{param pageIndex: $pageIndex ?: 0 /}
+			{param pages: $pages /}
+			{param paginationMode: $paginationMode /}
+			{param readOnly: $readOnly /}
+			{param showSubmitButton: $showSubmitButton /}
+			{param spritemap: $spritemap /}
+			{param strings: $strings /}
+			{param submitLabel: $submitLabel /}
+			{param total: $total /}
 			{param view: $view /}
 			{param viewMode: $viewMode /}
-	{/delcall}
+		{/delcall}
 
 		{if $paginationMode == 'wizard' and not $viewMode and $view != 'fieldSets'}
 			{if $successPageSettings.enabled and $pageIndex == length($pages) - 1}
