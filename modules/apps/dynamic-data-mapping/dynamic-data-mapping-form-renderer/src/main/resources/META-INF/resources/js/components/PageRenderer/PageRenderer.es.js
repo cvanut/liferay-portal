@@ -79,6 +79,14 @@ class PageRenderer extends Component {
 	}
 
 	prepareStateForRender(states) {
+		if (states.view === 'fieldSets') {
+			this._updateSuccessPage({
+				body: '',
+				enabled: false,
+				title: ''
+			});
+		}
+
 		return {
 			...states,
 			empty: this.isEmptyPage(states.page),
