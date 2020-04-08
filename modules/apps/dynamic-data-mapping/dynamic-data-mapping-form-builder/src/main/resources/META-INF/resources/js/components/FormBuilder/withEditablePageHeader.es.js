@@ -48,16 +48,22 @@ const withEditablePageHeader = ChildComponent => {
 			const {pages} = this.props;
 			const total = pages.length;
 			const visitor = new PagesVisitor(pages);
+			let rangeMax = total;
+
+			if (pages[pages.length - 1].contentRenderer == 'success') {
+				rangeMax = total - 1;
+			}
 
 			return visitor.mapPages((page, pageIndex) => {
 				return {
 					...page,
 					headerRenderer: 'editable',
 					pageIndex,
-					placeholder: sub(
-						Liferay.Language.get('untitled-page-x-of-x'),
-						[pageIndex + 1, total]
-					),
+					pagination: sub(Liferay.Language.get('page-x-of-x'), [
+						pageIndex + 1,
+						rangeMax,
+					]),
+					placeholder: Liferay.Language.get('page-title'),
 					total,
 				};
 			});
