@@ -29,6 +29,8 @@ import {Config} from 'metal-state';
 
 import templates from './FormRenderer.soy';
 
+import '../SuccessPage/SuccessPage.es';
+
 /**
  * FormRenderer.
  * @extends Component
