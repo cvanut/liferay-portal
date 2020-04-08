@@ -19,30 +19,8 @@
 	{@param? readOnly: bool}
 	{@param? strings: map<string, string>}
 
-	{if $activePage == $pageIndex}
-		{if length($pages) > 1 and $paginationMode == 'wizard'}
-			{call DDM.Form.Wizard.render}
-				{param activePage: $activePage /}
-				{param editable: $editable /}
-				{param pages: $pages /}
-				{param spritemap: $spritemap /}
-				{param total: $total /}
-			{/call}
-		{/if}
-
 		{call SuccessPage.render}
 			{param editingLanguageId: $editingLanguageId /}
 			{param successPageSettings: $page?.successPageSettings /}
 		{/call}
-
-		{if length($pages) > 1 and $paginationMode == 'paginated'}
-			{call DDM.Form.Pagination.render}
-				{param activePage: $activePage /}
-				{param editable: $editable /}
-				{param pages: $pages /}
-				{param spritemap: $spritemap /}
-				{param total: $total /}
-			{/call}
-		{/if}
-	{/if}
 {/deltemplate}
