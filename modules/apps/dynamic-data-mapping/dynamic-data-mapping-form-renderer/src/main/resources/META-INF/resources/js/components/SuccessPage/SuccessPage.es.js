@@ -24,9 +24,20 @@ class SuccessPage extends Component {
 		const {editingLanguageId, successPageSettings} = this;
 		const {body, title} = successPageSettings;
 
+		if (body[editingLanguageId] == '') {
+			body[editingLanguageId] = Liferay.Language.get(
+				'your-responses-have-been-submitted'
+			);
+		}
+
+		if (title[editingLanguageId] == '') {
+			title[editingLanguageId] = Liferay.Language.get('thank-you');
+		}
+
 		return {
 			...state,
 			body: (body && body[editingLanguageId]) || '',
+			enabled: true,
 			title: (title && title[editingLanguageId]) || '',
 		};
 	}
@@ -59,6 +70,10 @@ class SuccessPage extends Component {
 
 SuccessPage.STATE = {
 	editingLanguageId: Config.string(),
+
+	strings: Config.object().value({
+		'success-page': Liferay.Language.get('success-page'),
+	}),
 
 	/**
 	 * @instance
