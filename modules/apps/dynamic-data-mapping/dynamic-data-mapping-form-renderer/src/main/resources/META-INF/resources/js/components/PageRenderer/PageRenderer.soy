@@ -98,6 +98,48 @@
 					{/call}
 				</div>
 			{/if}
+
+			{if $page.contentRenderer != 'success'}
+				<div class="add-page-button-container">
+					<div class="horizontal-line"></div>
+						{call ClayButton.render}
+							{param label kind="text"}
+								{msg desc=""}New Page{/msg}
+							{/param}
+							{param events: [
+								'click': $_handleAddPageClicked
+							] /}
+							{param elementClasses: 'add-page-button' /}
+							{param ref: 'new-page' /}
+							{param size: 'sm' /}
+							{param spritemap: $spritemap /}
+							{param style: 'secondary' /}
+						{/call}
+					<div class="horizontal-line"></div>
+				</div>
+
+				{if $pageIndex == length($pages) - 1}
+					<div class="add-page-button-container">
+						<div class="horizontal-line"></div>
+							{call ClayButton.render}
+								{param label kind="text"}
+									{msg desc=""}Add Success Page{/msg}
+								{/param}
+								{param events: [
+									'click': $_handleAddSuccessPageClicked
+								] /}
+								{param elementClasses: 'add-page-button' /}
+								{param ref: 'success-page' /}
+								{param size: 'sm' /}
+								{param spritemap: $spritemap /}
+								{param style: 'secondary' /}
+							{/call}
+						<div class="horizontal-line"></div>
+					</div>
+				{/if}
+			{/if}
+		{/if}
+	</div>
 {/template}
 
 {template .page}
