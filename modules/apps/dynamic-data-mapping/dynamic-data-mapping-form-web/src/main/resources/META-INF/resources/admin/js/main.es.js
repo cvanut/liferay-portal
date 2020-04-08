@@ -870,7 +870,7 @@ class Form extends Component {
 							},
 						],
 						title: '',
-					}
+					},
 				],
 				paginationMode: 'wizard',
 				successPageSettings,
