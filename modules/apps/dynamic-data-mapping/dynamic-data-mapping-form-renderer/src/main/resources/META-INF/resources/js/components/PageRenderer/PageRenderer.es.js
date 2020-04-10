@@ -93,7 +93,7 @@ class PageRenderer extends Component {
 			this._updateSuccessPage({
 				body: '',
 				enabled: false,
-				title: ''
+				title: '',
 			});
 		}
 
@@ -106,13 +106,6 @@ class PageRenderer extends Component {
 				states.pages
 			),
 		};
-	}
-
-	_getPageNumber(node) {
-		return parseInt(
-			dom.closest(node, '[data-ddm-page]').dataset.ddmPage,
-			10
-		);
 	}
 
 	_addPage(pageIndex) {
@@ -128,7 +121,9 @@ class PageRenderer extends Component {
 		const {pages} = this;
 
 		this._updateSuccessPage({
-			body: Liferay.Language.get('your-responses-have-been-submitted'),
+			body: Liferay.Language.get(
+				'your-information-was-successfully-received-thank-you-for-filling-out-the-form'
+			),
 			enabled: true,
 			title: Liferay.Language.get('thank-you'),
 		});
