@@ -192,7 +192,7 @@ FormBuilderBase.PROPS = {
 	 * @default undefined
 	 * @instance
 	 * @memberof FormBuilder
-	 * @type {?string}
+	 * @type {?bool}
 	 */
 
 	viewMode: Config.bool(),
