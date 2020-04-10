@@ -26,7 +26,7 @@ class SuccessPage extends Component {
 
 		if (body[editingLanguageId] == '') {
 			body[editingLanguageId] = Liferay.Language.get(
-				'your-responses-have-been-submitted'
+				'your-information-was-successfully-received-thank-you-for-filling-out-the-form'
 			);
 		}
 
