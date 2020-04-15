@@ -13,7 +13,8 @@
 			"metal-jest-serializer"
 		],
 		"testPathIgnorePatterns": [
-			"FormRenderer"
+			"Evaluator",
+			"FormSupport"
 		]
 	},
 	"main": "index.js",
