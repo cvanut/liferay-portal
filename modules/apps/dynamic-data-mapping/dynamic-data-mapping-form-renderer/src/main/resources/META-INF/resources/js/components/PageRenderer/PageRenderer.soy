@@ -74,13 +74,13 @@
 
 		{if $paginationMode == 'wizard' and not $viewMode and $view != 'fieldSets'}
 			{if $successPageSettings.enabled and $pageIndex == length($pages) - 1}
-				<div class="ddm-paginated-builder-dropdown" data-ddm-page-actions="{$pageIndex}">
+				<div class="ddm-paginated-builder-dropdown" data-ddm-success-page-actions="{$pageIndex}">
 					{call ClayActionsDropdown.render}
 						{param items: $pageSuccessSettingsItems /}
 						{param events: [
 							'itemClicked': $_handleDropdownItemClicked
 						] /}
-						{param ref: 'page-actions-' + $pageIndex /}
+						{param ref: 'successPageActions' + $pageIndex /}
 						{param expanded: $dropdownExpanded /}
 						{param spritemap: $spritemap /}
 					{/call}
@@ -92,7 +92,7 @@
 						{param events: [
 							'itemClicked': $_handleDropdownItemClicked
 						] /}
-						{param ref: 'page-actions-' + $pageIndex /}
+						{param ref: 'pageActions' + $pageIndex /}
 						{param expanded: $dropdownExpanded /}
 						{param spritemap: $spritemap /}
 					{/call}
@@ -104,13 +104,15 @@
 					<div class="horizontal-line"></div>
 						{call ClayButton.render}
 							{param label kind="text"}
-								{msg desc=""}New Page{/msg}
+								{if isNonnull($strings)}
+									{$strings['new-page']}
+								{/if}
 							{/param}
 							{param events: [
 								'click': $_handleAddPageClicked
 							] /}
 							{param elementClasses: 'add-page-button' /}
-							{param ref: 'new-page' /}
+							{param ref: 'newPage' + $pageIndex /}
 							{param size: 'sm' /}
 							{param spritemap: $spritemap /}
 							{param style: 'secondary' /}
@@ -123,13 +125,15 @@
 						<div class="horizontal-line"></div>
 							{call ClayButton.render}
 								{param label kind="text"}
-									{msg desc=""}Add Success Page{/msg}
+									{if isNonnull($strings)}
+										{$strings['add-success-page']}
+									{/if}
 								{/param}
 								{param events: [
 									'click': $_handleAddSuccessPageClicked
 								] /}
 								{param elementClasses: 'add-page-button' /}
-								{param ref: 'success-page' /}
+								{param ref: 'successPage' /}
 								{param size: 'sm' /}
 								{param spritemap: $spritemap /}
 								{param style: 'secondary' /}
