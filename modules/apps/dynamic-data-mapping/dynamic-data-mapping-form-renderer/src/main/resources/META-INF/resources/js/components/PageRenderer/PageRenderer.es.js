@@ -336,6 +336,8 @@ PageRenderer.STATE = {
 	spritemap: Config.string().required(),
 
 	strings: Config.object().value({
+		'add-success-page': Liferay.Language.get('add-success-page'),
+		'new-page': Liferay.Language.get('new-page'),
 		'success-page': Liferay.Language.get('success-page'),
 	}),
 
