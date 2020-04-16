@@ -27,6 +27,7 @@ import javax.annotation.Generated;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -53,7 +54,25 @@ public interface InstanceResource {
 			Pagination pagination)
 		throws Exception;
 
+	public Instance postProcessInstance(Long processId, Instance instance)
+		throws Exception;
+
+	public Response postProcessInstanceBatch(
+			Long processId, String callbackURL, Object object)
+		throws Exception;
+
+	public void deleteProcessInstance(Long processId, Long instanceId)
+		throws Exception;
+
 	public Instance getProcessInstance(Long processId, Long instanceId)
+		throws Exception;
+
+	public void patchProcessInstance(
+			Long processId, Long instanceId, Instance instance)
+		throws Exception;
+
+	public void patchProcessInstanceComplete(
+			Long processId, Long instanceId, Instance instance)
 		throws Exception;
 
 	public default void setContextAcceptLanguage(

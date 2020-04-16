@@ -16,9 +16,10 @@ import classNames from 'classnames';
 import {useIsMounted} from 'frontend-js-react-web';
 import {debounce} from 'frontend-js-web';
 import PropTypes from 'prop-types';
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 
 import {updateFragmentEntryLinkContent} from '../../actions/index';
+import {DROP_ZONE_FRAGMENT_ENTRY_PROCESSOR} from '../../config/constants/dropZoneFragmentEntryProcessor';
 import {EDITABLE_FLOATING_TOOLBAR_BUTTONS} from '../../config/constants/editableFloatingToolbarButtons';
 import selectCanUpdateLayoutContent from '../../selectors/selectCanUpdateLayoutContent';
 import selectPrefixedSegmentsExperienceId from '../../selectors/selectPrefixedSegmentsExperienceId';
@@ -26,6 +27,7 @@ import selectSegmentsExperienceId from '../../selectors/selectSegmentsExperience
 import FragmentService from '../../services/FragmentService';
 import {useDispatch, useSelector} from '../../store/index';
 import {useGetFieldValue} from '../CollectionItemContext';
+import PageEditor from '../PageEditor';
 import UnsafeHTML from '../UnsafeHTML';
 import {
 	useEditableProcessorUniqueId,
@@ -60,9 +62,14 @@ const FragmentContent = React.forwardRef(
 			[editables]
 		);
 
-		const updateEditables = (parent = element) => {
-			setEditables(parent ? getAllEditables(parent) : []);
-		};
+		const updateEditables = useCallback(
+			parent => {
+				if (isMounted()) {
+					setEditables(parent ? getAllEditables(parent) : []);
+				}
+			},
+			[isMounted]
+		);
 
 		const languageId = useSelector(state => state.languageId);
 
@@ -147,6 +154,50 @@ const FragmentContent = React.forwardRef(
 			prefixedSegmentsExperienceId,
 		]);
 
+		const dropZones = useSelector(state => {
+			const fragmentEntryLink = state.fragmentEntryLinks[
+				fragmentEntryLinkId
+			] || {editableValues: {}};
+
+			const dropZoneValues =
+				fragmentEntryLink.editableValues[
+					DROP_ZONE_FRAGMENT_ENTRY_PROCESSOR
+				] || {};
+
+			return dropZoneValues.dropZones || {};
+		});
+
+		const getPortals = useCallback(
+			element =>
+				Array.from(element.querySelectorAll('lfr-drop-zone')).map(
+					dropZoneElement => {
+						const mainItemId = (
+							dropZones.find(
+								dropZone =>
+									dropZone.id ===
+									dropZoneElement.getAttribute('id')
+							) || {}
+						).uuid;
+
+						const Component = () =>
+							mainItemId && (
+								<PageEditor
+									mainItemId={mainItemId}
+									withinMasterPage
+								/>
+							);
+
+						Component.displayName = 'DropZoneComponent';
+
+						return {
+							Component,
+							element: dropZoneElement,
+						};
+					}
+				),
+			[dropZones]
+		);
+
 		const onFloatingToolbarButtonClick = (buttonId, editableId) => {
 			if (buttonId === EDITABLE_FLOATING_TOOLBAR_BUTTONS.edit.id) {
 				setEditableProcessorUniqueId(
@@ -167,6 +218,7 @@ const FragmentContent = React.forwardRef(
 							'page-editor__fragment-content--portlet-topper-hidden': !canUpdateLayoutContent,
 						})}
 						contentRef={ref}
+						getPortals={getPortals}
 						markup={content}
 						onRender={updateEditables}
 					/>
@@ -198,6 +250,8 @@ const FragmentContent = React.forwardRef(
 		);
 	}
 );
+
+FragmentContent.displayName = 'FragmentContent';
 
 FragmentContent.propTypes = {
 	fragmentEntryLinkId: PropTypes.string.isRequired,

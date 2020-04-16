@@ -44,6 +44,10 @@ public class LayoutStructureItemHelperFactory {
 			return new DropZoneLayoutStructureItemHelper();
 		}
 
+		if (pageElementType == PageElement.Type.FRAGMENT) {
+			return new FragmentLayoutStructureItemHelper();
+		}
+
 		if (pageElementType == PageElement.Type.ROW) {
 			return new RowLayoutStructureItemHelper();
 		}
@@ -52,8 +56,8 @@ public class LayoutStructureItemHelperFactory {
 			return new ContainerLayoutStructureItemHelper();
 		}
 
-		if (pageElementType == PageElement.Type.FRAGMENT) {
-			return new FragmentLayoutStructureItemHelper();
+		if (pageElementType == PageElement.Type.WIDGET) {
+			return new WidgetLayoutStructureItemHelper();
 		}
 
 		return null;
