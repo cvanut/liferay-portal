@@ -40,7 +40,7 @@
 </tr>
 <tr>
     <td>PAGE_TITLE_FIELD</td>
-    <td>//input[contains(@class,'form-builder-page-header-title')]</td>
+    <td>xpath=(//input[contains(@class,'form-builder-page-header-title')])[${key_titleNumber}]</td>
     <td></td>
 </tr>
 <tr>
@@ -77,7 +77,7 @@
 </tr>
 <tr>
     <td>PAGE_CONTROLS_ADD_NEW_PAGE</td>
-    <td>//li[contains(@class,'dropdown-item')]//a[text()='Add New Page'] | //button[contains(@class,'dropdown-item') and contains(text(),'Add New Page')]</td>
+    <td>//div[contains(@class,'add-page-button-container')]//button[contains(text(),'New Page')]</td>
     <td></td>
 </tr>
 <tr>
@@ -87,7 +87,7 @@
 </tr>
 <tr>
     <td>PAGE_CONTROLS_DELETE_CURRENT_PAGE</td>
-    <td>//li[contains(@class,'dropdown-item')]//a[text()='Delete Current Page'] | //button[contains(@class,'dropdown-item') and contains(text(),'Delete Current Page')]</td>
+    <td>//li[contains(@class,'dropdown-item')]//a[text()='Remove Page'] | //button[contains(@class,'dropdown-item') and contains(text(),'Remove Page')]</td>
     <td></td>
 </tr>
 <tr>
@@ -126,7 +126,7 @@
 </tr>
 <tr>
     <td>ADD_FIELD_POSITION</td>
-    <td>//div[contains(@class,'yui3-dd-drop') and contains(@class,'col-empty')] | //div[contains(@class,'col-empty')]</td>
+    <td>xpath=(//div[contains(@class,'yui3-dd-drop') and contains(@class,'col-empty')] | //div[contains(@class,'col-empty')])[${key_fieldPositionNumber_}]</td>
     <td></td>
 </tr>
 <tr>
