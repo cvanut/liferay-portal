@@ -1160,9 +1160,12 @@ definition {
 
         Form.editName();
 
-        Form.editPageTitle(formPageName = "Page 1");
+        Form.editPageTitle(
+            formTitleNumber = "1",
+            formPageName = "Page 1");
 
-        Form.addTextField();
+        Form.addTextField(
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 1");
 
@@ -1170,21 +1173,22 @@ definition {
 
         Form.addPage();
 
-        Form.editPageTitle(formPageName = "Page 2");
+        Form.editPageTitle(
+            formTitleNumber = "2",
+            formPageName = "Page 2");
 
-        Form.addTextField();
+        Form.addTextField(
+            fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 2");
 
         Form.closeSidebar();
 
-        Form.addSuccessPage();
-
         Form.editSuccessPage(
             successPageDescription = "Thank you for filling out the Form.",
             successPageTitle = "Success Page Title");
 
-        Form.deleteCurrentPage(formPageName = "Success Page");
+        Form.deleteCurrentPage(formPageName = "Success Page Title");
 
         Form.deleteCurrentPage(formPageName = "Page 2");
 
