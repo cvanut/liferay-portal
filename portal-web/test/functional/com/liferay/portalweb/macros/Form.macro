@@ -13,11 +13,11 @@ definition {
     }
 
     macro addPage {
-        Click(locator1 = "Form#PAGE_CONTROLS_ELLIPSIS_ICON");
+        //Click(locator1 = "Form#PAGE_CONTROLS_ADD_NEW_PAGE");
 
         AssertClick(
             locator1 = "Form#PAGE_CONTROLS_ADD_NEW_PAGE",
-            value1 = "Add New Page");
+            value1 = "New Page");
     }
 
     macro addSuccessPage {
@@ -29,7 +29,10 @@ definition {
     }
 
     macro addTextField {
-        Form.gotoAddField(fieldType = "Text");
+    
+        Form.gotoAddField(
+            fieldType = "Text",
+            key_fieldPositionNumber = "${fieldPositionNumber}");
     }
 
     macro addTranslation {
@@ -107,7 +110,7 @@ definition {
 
         AssertClick(
             locator1 = "Form#PAGE_CONTROLS_DELETE_CURRENT_PAGE",
-            value1 = "Delete Current Page");
+            value1 = "Remove Page");
 
         AssertElementNotPresent(locator1 = "FormPortlet#FORM_PAGE");
     }
@@ -232,6 +235,8 @@ definition {
     }
 
     macro editPageTitle {
+        var key_titleNumber = "${formTitleNumber}";
+
         Type(
             locator1 = "Form#PAGE_TITLE_FIELD",
             value1 = "${formPageName}");
@@ -297,6 +302,7 @@ definition {
         }
 
         var key_fieldType = "${fieldType}";
+        var key_fieldPositionNumber_ = "${key_fieldPositionNumber}";
 
         DragAndDrop.dragAndDropPortletToObject(
             locator1 = "Form#ADD_FIELD_TYPE",
