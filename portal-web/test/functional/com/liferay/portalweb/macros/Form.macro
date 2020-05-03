@@ -102,15 +102,29 @@ definition {
     }
 
     macro deleteCurrentPage {
-        var key_formPageName = "${formPageName}";
+        var key_formPageNumber = "${formPageNumber}";
 
-        AssertElementPresent(locator1 = "FormPortlet#FORM_PAGE_ACTIVE");
+        //AssertElementPresent(locator1 = "FormPortlet#FORM_PAGE_ACTIVE");
 
         Click(locator1 = "Form#PAGE_CONTROLS_ELLIPSIS_ICON");
 
         AssertClick(
             locator1 = "Form#PAGE_CONTROLS_DELETE_CURRENT_PAGE",
             value1 = "Remove Page");
+
+        AssertElementNotPresent(locator1 = "FormPortlet#FORM_PAGE");
+    }
+
+        macro deleteSuccessPage {
+        var key_formPageNumber = "${formPageNumber}";
+
+        //AssertElementPresent(locator1 = "FormPortlet#FORM_PAGE_ACTIVE");
+
+        Click(locator1 = "Form#PAGE_CONTROLS_ELLIPSIS_ICON");
+
+        AssertClick(
+            locator1 = "Form#PAGE_CONTROLS_DELETE_SUCCESS_PAGE",
+            value1 = "Remove Success Page");
 
         AssertElementNotPresent(locator1 = "FormPortlet#FORM_PAGE");
     }
