@@ -72,7 +72,7 @@
 <!--PAGE_CONTROLS-->
 <tr>
     <td>PAGE_CONTROLS_ELLIPSIS_ICON</td>
-    <td>//div[@class='form-builder-controls-trigger'] | //div[contains(@class,'dropdown-action')]</td>
+    <td>xpath=(//div[@class='form-builder-controls-trigger'] | //div[contains(@class,'dropdown-action')])[${key_formPageNumber}]</td>
     <td></td>
 </tr>
 <tr>
@@ -87,7 +87,12 @@
 </tr>
 <tr>
     <td>PAGE_CONTROLS_DELETE_CURRENT_PAGE</td>
-    <td>//li[contains(@class,'dropdown-item')]//a[text()='Remove Page'] | //button[contains(@class,'dropdown-item') and contains(text(),'Remove Page')]</td>
+    <td>xpath=(//li[contains(@class,'dropdown-item')]//a[text()='Remove Page'] | //button[contains(@class,'dropdown-item') and contains(text(),'Remove Page')])[${key_formPageNumber}]</td>
+    <td></td>
+</tr>
+<tr>
+    <td>PAGE_CONTROLS_DELETE_SUCCESS_PAGE</td>
+    <td>//li[contains(@class,'dropdown-item')]//a[text()='Remove Success Page'] | //button[contains(@class,'dropdown-item') and contains(text(),'Remove Success Page')]</td>
     <td></td>
 </tr>
 <tr>
