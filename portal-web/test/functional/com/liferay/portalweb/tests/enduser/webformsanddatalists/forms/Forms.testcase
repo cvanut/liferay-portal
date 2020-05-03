@@ -52,7 +52,9 @@ definition {
 
             Form.editDescription();
 
-            Form.editPageTitle(formPageName = "Created Form Page Name");
+            Form.editPageTitle(
+                formTitleNumber = "1", 
+                formPageName = "Created Form Page Name");
 
             Form.addTextField();
 
@@ -340,7 +342,9 @@ definition {
 
         Form.editDescription();
 
-        Form.editPageTitle(formPageName = "Created Form Page Name");
+        Form.editPageTitle(
+            formTitleNumber = "1", 
+            formPageName = "Created Form Page Name");
 
         Form.addTextField();
 
@@ -1188,9 +1192,9 @@ definition {
             successPageDescription = "Thank you for filling out the Form.",
             successPageTitle = "Success Page Title");
 
-        Form.deleteCurrentPage(formPageName = "Success Page Title");
+        Form.deleteCurrentPage(formPageNumber = "2");
 
-        Form.deleteCurrentPage(formPageName = "Page 2");
+        Form.deleteSuccessPage(formPageNumber = "2");
 
         FormFields.viewTextField(
             fieldLabel = "Text Field Page 1",
@@ -2902,7 +2906,9 @@ definition {
 
         Form.editDescription();
 
-        Form.editPageTitle(formPageName = "Page 1");
+        Form.editPageTitle(
+            formTitleNumber = "1", 
+            formPageName = "Page 1");
 
         Form.gotoAddField(fieldType = "Paragraph");
 
@@ -2986,7 +2992,9 @@ definition {
 
         Form.addPage();
 
-        Form.editPageTitle(formPageName = "Page 2");
+        Form.editPageTitle(
+            formTitleNumber = "2", 
+            formPageName = "Page 2");
 
         Form.gotoAddField(fieldType = "Grid");
 
@@ -3010,7 +3018,9 @@ definition {
 
         Form.addPage();
 
-        Form.editPageTitle(formPageName = "Page 3");
+        Form.editPageTitle(
+            formTitleNumber = "3", 
+            formPageName = "Page 3");
 
         Form.gotoAddField(fieldType = "Upload");
 
@@ -4052,6 +4062,7 @@ definition {
             fieldValue = "01/01/2016");
     }
 
+    @ignore = "true"
     @description = "This is a use case for LPS-71485 and LPS-71512."
     @priority = "2"
     test ViewAltSuccessPagePagination {
@@ -4070,7 +4081,9 @@ definition {
 
         Form.editDescription();
 
-        Form.editPageTitle(formPageName = "Page 1");
+        Form.editPageTitle(
+            formTitleNumber = "1", 
+            formPageName = "Page 1");
 
         Form.addTextField();
 
@@ -4080,7 +4093,9 @@ definition {
 
         Form.addPage();
 
-        Form.editPageTitle(formPageName = "Page 2");
+        Form.editPageTitle(
+            formTitleNumber = "2", 
+            formPageName = "Page 2");
 
         Form.addTextField();
 
@@ -4287,7 +4302,9 @@ definition {
 
         Form.editName();
 
-        Form.editPageTitle(formPageName = "Page 1");
+        Form.editPageTitle(
+            formTitleNumber = "1", 
+            formPageName = "Page 1");
 
         Form.addTextField();
 
@@ -4297,7 +4314,9 @@ definition {
 
         Form.addPage();
 
-        Form.editPageTitle(formPageName = "Page 2");
+        Form.editPageTitle(
+            formTitleNumber = "2", 
+            formPageName = "Page 2");
 
         Form.addTextField();
 
@@ -4309,7 +4328,9 @@ definition {
 
         Form.addPage();
 
-        Form.editPageTitle(formPageName = "Page 3");
+        Form.editPageTitle(
+            formTitleNumber = "3", 
+            formPageName = "Page 3");
 
         Form.addTextField();
 
