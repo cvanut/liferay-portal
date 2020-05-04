@@ -13,7 +13,8 @@ definition {
     }
 
     macro addPage {
-        //Click(locator1 = "Form#PAGE_CONTROLS_ADD_NEW_PAGE");
+
+        var key_formAddNewPageNumber = "${formAddNewPageNumber}";
 
         AssertClick(
             locator1 = "Form#PAGE_CONTROLS_ADD_NEW_PAGE",
@@ -316,7 +317,15 @@ definition {
         }
 
         var key_fieldType = "${fieldType}";
-        var key_fieldPositionNumber_ = "${key_fieldPositionNumber}";
+
+        if ("${key_fieldType}" == "Text") {
+	        var key_fieldPositionNumber_ = "${key_fieldPositionNumber}";
+        }
+        else{
+            var key_fieldPositionNumber_ = "${fieldPositionNumber}";
+        }
+        
+        
 
         DragAndDrop.dragAndDropPortletToObject(
             locator1 = "Form#ADD_FIELD_TYPE",
