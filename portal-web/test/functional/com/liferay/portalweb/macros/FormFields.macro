@@ -59,6 +59,14 @@ definition {
 			value1 = "Duplicate Field");
 	}
 
+	macro duplicateRichTextField {
+		Click(locator1 = "Form#SIDEBAR_DUPLICATE_PLUS");
+	}
+
+	macro deleteDuplicateRichTextField {
+		Click(locator1 = "Form#SIDEBAR_DUPLICATE_DELETE");
+	}
+
 	macro editBlankMultiTextFieldWithEnterKey {
 		KeyPress(
 			key_fieldName = "${fieldName}",
