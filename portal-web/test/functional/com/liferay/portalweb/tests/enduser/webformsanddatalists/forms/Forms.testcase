@@ -56,7 +56,7 @@ definition {
                 formTitleNumber = "1", 
                 formPageName = "Created Form Page Name");
 
-            Form.addTextField();
+            Form.addTextField(fieldPositionNumber = "1");
 
             Form.editFieldLabelMetal(fieldValue = "Label");
 
@@ -117,7 +117,7 @@ definition {
 
         Form.editDescription(formDescription = "Element Set Description");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabel(fieldValue = "Text Field Required");
 
@@ -125,7 +125,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "2");
 
         Form.editFieldLabel(fieldValue = "Select Repeatable");
 
@@ -181,7 +183,9 @@ definition {
 
         Form.gotoAddElementSet(elementSetTitle = "Element Set 1");
 
-        Form.gotoAddField(fieldType = "Date");
+        Form.gotoAddField(
+            fieldType = "Date", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Date Field");
 
@@ -347,7 +351,7 @@ definition {
             formTitleNumber = "1", 
             formPageName = "Created Form Page Name");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Label");
 
@@ -516,7 +520,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -551,7 +555,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -595,7 +599,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field On Spanish Portal");
 
@@ -672,7 +676,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Testing Title");
 
@@ -880,7 +886,7 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -983,7 +989,7 @@ definition {
 
         Form.editName();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Should Not Be Saved");
 
@@ -999,7 +1005,7 @@ definition {
 
         Form.editName();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Will Be Saved");
 
@@ -1027,7 +1033,7 @@ definition {
 
         FormsAdminNavigator.gotoAddForm();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -1062,13 +1068,15 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Date");
+        Form.gotoAddField(
+            fieldType = "Date", 
+            fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "Date Field");
 
@@ -1169,21 +1177,19 @@ definition {
             formTitleNumber = "1",
             formPageName = "Page 1");
 
-        Form.addTextField(
-            fieldPositionNumber = "1");
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 1");
 
         Form.closeSidebar();
 
-        Form.addPage();
+        Form.addPage(formAddNewPageNumber = "1");
 
         Form.editPageTitle(
             formTitleNumber = "2",
             formPageName = "Page 2");
 
-        Form.addTextField(
-            fieldPositionNumber = "3");
+        Form.addTextField(fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 2");
 
@@ -1217,7 +1223,9 @@ definition {
 
         Form.editName(formName = "Delete Select Option Test");
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Select");
 
@@ -1310,7 +1318,9 @@ definition {
 
         Form.editName();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Select");
 
@@ -1374,7 +1384,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Paragraph");
+        Form.gotoAddField(
+            fieldType = "Paragraph", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
@@ -1388,7 +1400,7 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text");
 
@@ -1400,7 +1412,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List",
+            fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "Select");
 
@@ -1433,7 +1447,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Single Selection");
+        Form.gotoAddField(
+            fieldType = "Single Selection",
+            fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Radio");
 
@@ -1468,7 +1484,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Date");
+        Form.gotoAddField(
+            fieldType = "Date", 
+            fieldPositionNumber = "4");
 
         Form.editFieldLabelMetal(fieldValue = "Date");
 
@@ -1480,7 +1498,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "5");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox");
 
@@ -1767,7 +1787,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -1848,7 +1868,9 @@ definition {
 
         Form.editName();
 
-        Form.gotoAddField(fieldType = "Grid");
+        Form.gotoAddField(
+            fieldType = "Grid", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Grid Field Translated");
 
@@ -1968,7 +1990,7 @@ definition {
 
         Form.editName(formName = "Text");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text");
 
@@ -1986,7 +2008,9 @@ definition {
 
         Form.editName(formName = "Checkbox");
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox");
 
@@ -2058,7 +2082,7 @@ definition {
             Click(locator1 = "Form#SIDEBAR_CLOSE");
         }
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -2137,7 +2161,9 @@ definition {
 
         FormsAdminNavigator.gotoAddForm();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "1");
 
         for (var number : list "1,2,3,4") {
             FormFields.editOptionsRow(
@@ -2214,7 +2240,7 @@ definition {
 
         Form.editDescription(formDescription = "Test Form Description");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -2309,7 +2335,9 @@ definition {
 
         Form.editName();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Select");
 
@@ -2389,7 +2417,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Paragraph");
+        Form.gotoAddField(
+            fieldType = "Paragraph", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
@@ -2397,13 +2427,15 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "Text");
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Select");
 
@@ -2418,7 +2450,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Single Selection");
+        Form.gotoAddField(
+            fieldType = "Single Selection", 
+            fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Radio");
 
@@ -2433,13 +2467,17 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Date");
+        Form.gotoAddField(
+            fieldType = "Date", 
+            fieldPositionNumber = "4");
 
         Form.editFieldLabelMetal(fieldValue = "Date");
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "5");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox");
 
@@ -2744,7 +2782,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -2830,7 +2868,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -2923,7 +2961,9 @@ definition {
             formTitleNumber = "1", 
             formPageName = "Page 1");
 
-        Form.gotoAddField(fieldType = "Paragraph");
+        Form.gotoAddField(
+            fieldType = "Paragraph", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
@@ -2931,13 +2971,13 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "SingleLineText");
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "MultilineText");
 
@@ -2947,7 +2987,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "4");
 
         Form.editFieldLabelMetal(fieldValue = "Select");
 
@@ -2962,7 +3004,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Single Selection");
+        Form.gotoAddField(
+            fieldType = "Single Selection", 
+            fieldPositionNumber = "5");
 
         Form.editFieldLabelMetal(fieldValue = "Radio");
 
@@ -2979,13 +3023,17 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Date");
+        Form.gotoAddField(
+            fieldType = "Date", 
+            fieldPositionNumber = "6");
 
         Form.editFieldLabelMetal(fieldValue = "Date");
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "7");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox");
 
@@ -3003,13 +3051,15 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addPage();
+        Form.addPage(formAddNewPageNumber = "1");
 
         Form.editPageTitle(
             formTitleNumber = "2", 
             formPageName = "Page 2");
 
-        Form.gotoAddField(fieldType = "Grid");
+        Form.gotoAddField(
+            fieldType = "Grid", 
+            fieldPositionNumber = "9");
 
         Form.editFieldLabelMetal(fieldValue = "Grid Field Survey");
 
@@ -3029,19 +3079,25 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addPage();
+        Form.addPage(formAddNewPageNumber = "2");
 
         Form.editPageTitle(
             formTitleNumber = "3", 
             formPageName = "Page 3");
 
-        Form.gotoAddField(fieldType = "Upload");
+        Form.gotoAddField(
+            fieldType = "Upload", 
+            fieldPositionNumber = "11");
 
-        Form.editFieldLabelMetal(fieldValue = "Upload Field");
+        Form.editFieldLabelMetal(
+            fieldValue = "Upload Field", 
+            fieldPositionNumber = "11");
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Numeric");
+        Form.gotoAddField(
+            fieldType = "Numeric", 
+            fieldPositionNumber = "12");
 
         Form.editFieldLabelMetal(fieldValue = "Value");
 
@@ -3206,7 +3262,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text");
 
@@ -3294,13 +3350,15 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox Field");
 
@@ -3311,7 +3369,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Single Selection");
+        Form.gotoAddField(
+            fieldType = "Single Selection", 
+            fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "Radio Field");
 
@@ -3326,7 +3386,9 @@ definition {
 
         Form.closeSidebar();
 
-        Form.gotoAddField(fieldType = "Select from List");
+        Form.gotoAddField(
+            fieldType = "Select from List", 
+            fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Select Field");
 
@@ -3464,7 +3526,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection",
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox Field");
 
@@ -3545,7 +3609,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -3624,7 +3688,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Single Selection");
+        Form.gotoAddField(
+            fieldType = "Single Selection", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Radio Field");
 
@@ -3709,7 +3775,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -3790,7 +3856,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -3866,7 +3932,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox Field");
 
@@ -3955,7 +4023,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Upload");
+        Form.gotoAddField(
+            fieldType = "Upload", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Upload Field");
 
@@ -4018,7 +4088,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Date");
+        Form.gotoAddField(
+            fieldType = "Date", 
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Date Field");
 
@@ -4098,19 +4170,19 @@ definition {
             formTitleNumber = "1", 
             formPageName = "Page 1");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
         Form.closeSidebar();
 
-        Form.addPage();
+        Form.addPage(formAddNewPageNumber = "1");
 
         Form.editPageTitle(
             formTitleNumber = "2", 
             formPageName = "Page 2");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Text2");
 
@@ -4162,13 +4234,13 @@ definition {
 
         FormsAdminNavigator.gotoAddForm();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "One");
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "2");
 
         Form.editFieldLabelMetal(fieldValue = "Two");
 
@@ -4178,7 +4250,7 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         FormFields.viewFieldLabel(
             fieldName = "label",
@@ -4199,7 +4271,7 @@ definition {
 
         FormsAdminNavigator.gotoAddForm();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -4237,7 +4309,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         FormFields.editText(
             fieldName = "label",
@@ -4249,7 +4321,7 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         FormFields.editText(
             fieldName = "label",
@@ -4320,19 +4392,19 @@ definition {
             formTitleNumber = "1", 
             formPageName = "Page 1");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 1");
 
         Form.closeSidebar();
 
-        Form.addPage();
+        Form.addPage(formAddNewPageNumber = "1");
 
         Form.editPageTitle(
             formTitleNumber = "2", 
             formPageName = "Page 2");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "3");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 2");
 
@@ -4340,13 +4412,13 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addPage();
+        Form.addPage(formAddNewPageNumber = "1");
 
         Form.editPageTitle(
             formTitleNumber = "3", 
             formPageName = "Page 3");
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "5");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field Page 3");
 
@@ -4396,7 +4468,9 @@ definition {
 
         Form.editDescription();
 
-        Form.gotoAddField(fieldType = "Multiple Selection");
+        Form.gotoAddField(
+            fieldType = "Multiple Selection",
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Multiple Selection");
 
@@ -4469,7 +4543,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -4526,7 +4600,7 @@ definition {
 
         Form.editName();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
@@ -4562,7 +4636,7 @@ definition {
 
         Form.editDescription();
 
-        Form.addTextField();
+        Form.addTextField(fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Text Field");
 
