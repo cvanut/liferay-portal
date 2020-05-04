@@ -77,7 +77,7 @@
 </tr>
 <tr>
     <td>PAGE_CONTROLS_ADD_NEW_PAGE</td>
-    <td>//div[contains(@class,'add-page-button-container')]//button[contains(text(),'New Page')]</td>
+    <td>xpath=(//div[contains(@class,'add-page-button-container')]//button[contains(text(),'New Page')])[${key_formAddNewPageNumber}]</td>
     <td></td>
 </tr>
 <tr>

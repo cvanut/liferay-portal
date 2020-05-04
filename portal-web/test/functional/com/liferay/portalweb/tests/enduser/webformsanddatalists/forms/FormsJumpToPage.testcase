@@ -24,9 +24,13 @@ definition {
 
         Form.editName();
 
-        Form.editPageTitle(formPageName = "Page 1");
+        Form.editPageTitle(
+            formTitleNumber = "1", 
+            formPageName = "Page 1");
 
-        Form.gotoAddField(fieldType = "Single Selection");
+        Form.gotoAddField(
+            fieldType = "Single Selection",
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Choose Your Destiny");
 
@@ -51,7 +55,9 @@ definition {
 
             var pageNumber = ${option} + 1;
 
-            Form.editPageTitle(formPageName = "Page ${pageNumber}");
+            Form.editPageTitle(
+                formTitleNumber = "${pageNumber}", 
+                formPageName = "Page ${pageNumber}");
 
             Form.addTextField();
 
@@ -246,7 +252,9 @@ definition {
         property test.name.skip.portal.instance = "FormsJumpToPage#ViewRuleAfterPageNameChange";
         Form.gotoFormPage(formPageName = "Page 3");
 
-        Form.editPageTitle(formPageName = "Renamed Page");
+        Form.editPageTitle(
+            formTitleNumber = "3", 
+            formPageName = "Renamed Page");
 
         Form.save();
 
