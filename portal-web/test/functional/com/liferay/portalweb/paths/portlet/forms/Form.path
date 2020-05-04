@@ -307,9 +307,20 @@
     <td></td>
 </tr>
 <tr>
+<<<<<<< HEAD
     <td></td>
     <td></td>
     <td></td>
+=======
+	<td>SIDEBAR_DUPLICATE_PLUS</td>
+	<td>//button[contains(@class,'ddm-form-field-repeatable-add-button')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SIDEBAR_DUPLICATE_DELETE</td>
+	<td>//button[@class='ddm-form-field-repeatable-delete-button p-0 btn btn-sm btn-primary']</td>
+	<td></td>
+>>>>>>> LRQA-57234 Added sidebar duplicate path
 </tr>
 <!--DATA_PROVIDER_OUTPUT_PARAMETER-->
 <tr>
