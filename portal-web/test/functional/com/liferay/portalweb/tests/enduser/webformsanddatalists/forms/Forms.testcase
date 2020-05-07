@@ -2036,7 +2036,7 @@ definition {
 
         Form.gotoAddField(
             fieldType = "Multiple Selection", 
-            fieldPositionNumber = "2");
+            fieldPositionNumber = "1");
 
         Form.editFieldLabelMetal(fieldValue = "Checkbox");
 
@@ -4449,7 +4449,7 @@ definition {
 
         Form.closeSidebar();
 
-        Form.addPage(formAddNewPageNumber = "1");
+        Form.addPage(formAddNewPageNumber = "2");
 
         Form.editPageTitle(
             formTitleNumber = "3", 
