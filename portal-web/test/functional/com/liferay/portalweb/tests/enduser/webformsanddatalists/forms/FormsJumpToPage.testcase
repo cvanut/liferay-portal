@@ -51,7 +51,7 @@ definition {
         Form.closeSidebar();
 
         for (var option : list "1,2,3") {
-            Form.addPage();
+            Form.addPage(formAddNewPageNumber = "${option}");
 
             var pageNumber = ${option} + 1;
 
@@ -59,9 +59,20 @@ definition {
                 formTitleNumber = "${pageNumber}", 
                 formPageName = "Page ${pageNumber}");
 
-            Form.addTextField();
+            if ("${pageNumber}" == "1") {
+	            Form.addTextField(fieldPositionNumber = "1");
+            }
+            else if ("${pageNumber}" == "2") {
+	            Form.addTextField(fieldPositionNumber = "3");
+            }
+            else if ("${pageNumber}" == "3") {
+	            Form.addTextField(fieldPositionNumber = "5");
+            }
+            else{
+                Form.addTextField(fieldPositionNumber = "7");
+            }
 
-            Form.editFieldLabelMetal(fieldValue = "Destiny ${option}");
+            Form.editFieldLabelMetal(fieldValue = "Destiny ${pageNumber}");
 
             Form.closeSidebar();
         }
@@ -250,7 +261,6 @@ definition {
     @priority = "4"
     test ViewRuleAfterPageNameChange {
         property test.name.skip.portal.instance = "FormsJumpToPage#ViewRuleAfterPageNameChange";
-        Form.gotoFormPage(formPageName = "Page 3");
 
         Form.editPageTitle(
             formTitleNumber = "3", 
