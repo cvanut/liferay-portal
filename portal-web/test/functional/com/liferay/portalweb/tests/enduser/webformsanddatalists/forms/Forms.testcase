@@ -1009,6 +1009,63 @@ definition {
 			rowEntry = "Created Form Name");
 	}
 
+	@description = "CRUD of HTML Field"
+	@priority = "5"
+	test CreateReadUpdateDeleteHTMLField {
+		Navigator.openURL();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Form.editName(formName = "Rich Text Form");
+
+		Form.editDescription(formDescription = "Rich Text Description");
+
+		Form.gotoAddField(fieldType = "Rich Text");
+
+		Form.editFieldLabelMetal(fieldValue = "Rich Text Field");
+
+		Form.closeSidebar();
+
+		Form.save();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdmin.viewForm(
+			formDescription = "Rich Text Description",
+			formName = "Rich Text Form");
+
+		FormsAdminNavigator.gotoEditFormByName(formName = "Rich Text Form");
+
+		Form.editName(formName = "Rich Text Form Edit");
+
+		Form.editDescription(formDescription = "Rich Text Description Edit");
+
+		Form.gotoAddField(fieldType = "Rich Text");
+
+		Form.editFieldLabelMetal(fieldValue = "Rich Text Field Edit");
+
+		Form.closeSidebar();
+
+		Form.save();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdmin.viewForm(
+			formDescription = "Rich Text Description Edit",
+			formName = "Rich Text Form Edit");
+	}
+
 	@description = "This is a use case for LPS-64379."
 	@priority = "3"
 	test CreateUntitledForm {
