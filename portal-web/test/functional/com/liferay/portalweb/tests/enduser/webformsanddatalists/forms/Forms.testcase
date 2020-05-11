@@ -86,7 +86,7 @@ definition {
         Form.editName();
 
         for (var number : list "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30") {
-            Form.addTextField();
+            Form.addTextField(fieldPositionNumber = "${number}");
 
             Form.editFieldLabelMetal(fieldValue = "Field${number}");
 
@@ -1395,7 +1395,7 @@ definition {
 
 		FormFields.editParagraphBody(content = "Paragraph body text.");
 
-        FormFields.editParagraphBody(fieldValue = "Paragraph body text.");
+        CKEditor.addContent(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2410,7 +2410,7 @@ definition {
 
 		FormFields.editParagraphBody(content = "Paragraph body text.");
 
-        FormFields.editParagraphBody(fieldValue = "Paragraph body text.");
+        CKEditor.addContent(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2552,8 +2552,6 @@ definition {
         FormsAdminNavigator.gotoEditField(fieldName = "Paragraph");
 
 		FormFields.editParagraphBody(content = "New Paragraph body text.");
-
-        FormFields.editParagraphBody(fieldValue = "New Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2954,7 +2952,7 @@ definition {
 
 		FormFields.editParagraphBody(content = "Paragraph body text.");
 
-        FormFields.editParagraphBody(fieldValue = "Paragraph body text.");
+        CKEditor.addContent(content = "Paragraph body text.");
 
         Form.closeSidebar();
 

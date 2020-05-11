@@ -72,7 +72,9 @@ definition {
                 Form.addTextField(fieldPositionNumber = "7");
             }
 
-            Form.editFieldLabelMetal(fieldValue = "Destiny ${pageNumber}");
+            var addPageNumber = ${pageNumber} - 1;
+
+            Form.editFieldLabelMetal(fieldValue = "Destiny ${addPageNumber}");
 
             Form.closeSidebar();
         }
