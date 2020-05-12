@@ -1395,7 +1395,7 @@ definition {
 
 		FormFields.editParagraphBody(content = "Paragraph body text.");
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2410,7 +2410,7 @@ definition {
 
 		FormFields.editParagraphBody(content = "Paragraph body text.");
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2550,6 +2550,8 @@ definition {
             rowEntry = "Created Form Name");
 
         FormsAdminNavigator.gotoEditField(fieldName = "Paragraph");
+
+		FormFields.editParagraphBody(content = "New Paragraph body text.");
 
 		FormFields.editParagraphBody(content = "New Paragraph body text.");
 
@@ -2952,7 +2954,7 @@ definition {
 
 		FormFields.editParagraphBody(content = "Paragraph body text.");
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
