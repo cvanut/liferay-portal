@@ -1395,7 +1395,7 @@ definition {
 
         FormFields.viewFieldName(fieldName = "ParagraphName");
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2422,7 +2422,7 @@ definition {
 
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2564,6 +2564,8 @@ definition {
         FormsAdminNavigator.gotoEditField(fieldName = "Paragraph");
 
         Form.editFieldLabelMetal(fieldValue = "New Paragraph");
+
+		FormFields.editParagraphBody(content = "New Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2964,7 +2966,7 @@ definition {
 
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
