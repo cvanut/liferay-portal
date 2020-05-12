@@ -1399,7 +1399,7 @@ definition {
         FormFields.viewFieldName(fieldName = "ParagraphName");
 >>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2453,7 +2453,7 @@ definition {
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 >>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -2599,6 +2599,8 @@ definition {
 =======
         Form.editFieldLabelMetal(fieldValue = "New Paragraph");
 >>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
+
+		FormFields.editParagraphBody(content = "New Paragraph body text.");
 
         Form.closeSidebar();
 
@@ -3003,7 +3005,7 @@ definition {
         Form.editFieldLabelMetal(fieldValue = "Paragraph");
 >>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
-        CKEditor.addContent(content = "Paragraph body text.");
+        FormFields.editParagraphBody(content = "Paragraph body text.");
 
         Form.closeSidebar();
 
