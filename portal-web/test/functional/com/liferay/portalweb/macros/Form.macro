@@ -319,10 +319,10 @@ definition {
         var key_fieldType = "${fieldType}";
 
         if ("${key_fieldType}" == "Text") {
-	        var key_fieldPositionNumber_ = "${key_fieldPositionNumber}";
+	        var key_fieldLocation = "${key_fieldPositionNumber}";
         }
         else{
-            var key_fieldPositionNumber_ = "${fieldPositionNumber}";
+            var key_fieldLocation = "${fieldPositionNumber}";
         }
         
         
