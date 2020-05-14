@@ -606,7 +606,7 @@ describe('LayoutProvider', () => {
 
 				const {dispatch} = child.context;
 
-				dispatch('pageAdded');
+				dispatch('pageAdded', {pageIndex: 1});
 
 				jest.runAllTimers();
 
@@ -625,7 +625,7 @@ describe('LayoutProvider', () => {
 
 				const {dispatch} = child.context;
 
-				dispatch('pageReset');
+				dispatch('pageReset', {pageIndex: 0});
 
 				jest.runAllTimers();
 
