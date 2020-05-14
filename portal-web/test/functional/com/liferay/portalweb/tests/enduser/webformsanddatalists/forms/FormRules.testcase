@@ -84,8 +84,8 @@ definition {
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Select from List", 
-			fieldPositionNumber = "2");
+			fieldPositionNumber = "2",
+			fieldType = "Select from List");
 
 		Form.editFieldLabelMetal(fieldValue = "Countries");
 
@@ -182,24 +182,24 @@ definition {
 		Form.editName();
 
 		Form.gotoAddField(
-			fieldType = "Numeric", 
-			fieldPositionNumber = "1");
+			fieldPositionNumber = "1",
+			fieldType = "Numeric");
 
 		Form.editFieldLabelMetal(fieldValue = "Quantity");
 
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Numeric", 
-			fieldPositionNumber = "2");
+			fieldPositionNumber = "2",
+			fieldType = "Numeric");
 
 		Form.editFieldLabelMetal(fieldValue = "Value");
 
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Numeric",
-			fieldPositionNumber = "3");
+			fieldPositionNumber = "3",
+			fieldType = "Numeric");
 
 		Form.editFieldLabelMetal(fieldValue = "Total");
 
@@ -295,8 +295,8 @@ definition {
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Date", 
-			fieldPositionNumber = "2");
+			fieldPositionNumber = "2",
+			fieldType = "Date");
 
 		Form.editFieldLabelMetal(fieldValue = "Date Field");
 
@@ -391,8 +391,8 @@ definition {
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Date", 
-			fieldPositionNumber = "3");
+			fieldPositionNumber = "3",
+			fieldType = "Date");
 
 		Form.editFieldLabelMetal(fieldValue = "Date Field");
 
@@ -744,8 +744,8 @@ definition {
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Date", 
-			fieldPositionNumber = "2");
+			fieldPositionNumber = "2",
+			fieldType = "Date");
 
 		Form.editFieldLabelMetal(fieldValue = "Date Field");
 
@@ -1089,8 +1089,8 @@ definition {
 		Form.closeSidebar();
 
 		Form.gotoAddField(
-			fieldType = "Date",
-			fieldPositionNumber = "3");
+			fieldPositionNumber = "3",
+			fieldType = "Date");
 
 		Form.editFieldLabelMetal(fieldValue = "Date Field");
 

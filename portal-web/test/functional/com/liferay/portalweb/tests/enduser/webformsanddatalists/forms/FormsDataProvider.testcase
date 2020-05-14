@@ -230,8 +230,8 @@ definition {
 		Form.editDescription();
 
 		Form.gotoAddField(
-			fieldType = "Select from List",
-			fieldPositionNumber = "1");
+			fieldPositionNumber = "1",
+			fieldType = "Select from List");
 
 		Form.editFieldLabelMetal(fieldValue = "Data Provider Select Field");
 
@@ -337,8 +337,8 @@ definition {
 		Form.editDescription();
 
 		Form.gotoAddField(
-			fieldType = "Select from List",
-			fieldPositionNumber = "1");
+			fieldPositionNumber = "1",
+			fieldType = "Select from List");
 
 		Form.editFieldLabelMetal(fieldValue = "Countries");
 
