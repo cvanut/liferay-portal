@@ -1393,11 +1393,7 @@ definition {
 
         FormFields.editFieldName(fieldValue = "ParagraphName");
 
-<<<<<<< HEAD
 		FormFields.editParagraphBody(content = "Paragraph body text.");
-=======
-        FormFields.viewFieldName(fieldName = "ParagraphName");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         FormFields.editParagraphBody(content = "Paragraph body text.");
 
@@ -1718,14 +1714,7 @@ definition {
 
         Navigator.openURL();
 
-<<<<<<< HEAD
 		LexiconEntry.viewActiveDisplayStyle(displayStyle = "table");
-=======
-        ProductMenu.gotoPortlet(
-            category = "Content &amp; Data",
-            panel = "Site Administration",
-            portlet = "Forms");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         LexiconEntry.viewActiveDisplayStyle(displayStyle = "list");
 
@@ -1734,7 +1723,6 @@ definition {
             panel = "Control Panel",
             portlet = "System Settings");
 
-<<<<<<< HEAD
 		FormFields.viewSelectOption(
 			fieldName = "Default Display View",
 			selectOption = "Table");
@@ -1742,16 +1730,6 @@ definition {
 		FormFields.selectSelectOption(
 			fieldName = "Default Display View",
 			selectOption = "List");
-=======
-        SystemSettings.gotoConfiguration(
-            configurationCategory = "Forms",
-            configurationName = "Forms",
-            configurationScope = "Site Scope");
-
-        FormFields.viewSelectOption(
-            fieldName = "Default Display View",
-            selectOption = "List");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         FormFields.selectSelectOption(
             fieldName = "Default Display View",
@@ -1759,14 +1737,7 @@ definition {
 
         SystemSettings.saveConfiguration();
 
-<<<<<<< HEAD
 		LexiconEntry.viewActiveDisplayStyle(displayStyle = "list");
-=======
-        ProductMenu.gotoPortlet(
-            category = "Content &amp; Data",
-            panel = "Site Administration",
-            portlet = "Forms");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         LexiconEntry.viewActiveDisplayStyle(displayStyle = "table");
 
@@ -1782,15 +1753,7 @@ definition {
 
         SystemSettings.resetConfiguration(configurationName = "Forms");
 
-<<<<<<< HEAD
 		LexiconEntry.viewActiveDisplayStyle(displayStyle = "table");
-	}
-=======
-        ProductMenu.gotoPortlet(
-            category = "Content &amp; Data",
-            panel = "Site Administration",
-            portlet = "Forms");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         LexiconEntry.viewActiveDisplayStyle(displayStyle = "list");
     }
@@ -2447,11 +2410,7 @@ definition {
             fieldType = "Paragraph", 
             fieldPositionNumber = "1");
 
-<<<<<<< HEAD
 		FormFields.editParagraphBody(content = "Paragraph body text.");
-=======
-        Form.editFieldLabelMetal(fieldValue = "Paragraph");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         FormFields.editParagraphBody(content = "Paragraph body text.");
 
@@ -2594,11 +2553,7 @@ definition {
 
         FormsAdminNavigator.gotoEditField(fieldName = "Paragraph");
 
-<<<<<<< HEAD
 		FormFields.editParagraphBody(content = "New Paragraph body text.");
-=======
-        Form.editFieldLabelMetal(fieldValue = "New Paragraph");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
 		FormFields.editParagraphBody(content = "New Paragraph body text.");
 
@@ -2999,11 +2954,7 @@ definition {
             fieldType = "Paragraph", 
             fieldPositionNumber = "1");
 
-<<<<<<< HEAD
 		FormFields.editParagraphBody(content = "Paragraph body text.");
-=======
-        Form.editFieldLabelMetal(fieldValue = "Paragraph");
->>>>>>> LPS-111879 - Fix Forms#ViewSuccessPage test
 
         FormFields.editParagraphBody(content = "Paragraph body text.");
 
@@ -4719,5 +4670,4 @@ definition {
             successPageDescription = "Edited: Your information was successfully received. Thank you for filling out the form.",
             successPageTitle = "Edited: Thank You");
     }
-
 }
