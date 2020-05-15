@@ -420,12 +420,14 @@ class LayoutProvider extends Component {
 		this.setState(handleLanguageIdDeleted(focusedField, pages, locale));
 	}
 
-	_handlePageAdded() {
+	_handlePageAdded({pageIndex}) {
 		const {pages} = this.state;
 
+		pages.splice(pageIndex + 1, 0, this.createNewPage());
+
 		this.setState({
-			activePage: pages.length,
-			pages: [...pages, this.createNewPage()],
+			activePage: pageIndex + 1,
+			pages,
 		});
 	}
 
@@ -438,9 +440,13 @@ class LayoutProvider extends Component {
 		});
 	}
 
-	_handlePageReset() {
+	_handlePageReset({pageIndex}) {
+		const {pages} = this.state;
+
+		pages.splice(pageIndex, 1, this.createNewPage());
+
 		this.setState({
-			pages: [this.createNewPage()],
+			pages,
 		});
 	}
 

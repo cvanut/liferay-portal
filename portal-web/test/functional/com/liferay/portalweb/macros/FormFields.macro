@@ -130,6 +130,8 @@ definition {
 
 		SelectFrame.selectFrameNoLoading(locator1 = "CKEditor#BODY_FIELD_IFRAME");
 
+		SelectFrame.selectFrameNoLoading(locator1 = "CKEditor#BODY_FIELD_IFRAME");
+
 		Type.clickAtType(
 			locator1 = "CKEditor#BODY",
 			value1 = "${content}");
