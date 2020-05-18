@@ -171,6 +171,10 @@ definition {
 		AssertElementNotPresent(locator1 = "FormsAdmin#FORM_ENTRY_TABLE_ENTRY");
 	}
 
+	macro viewImageTableEntry {
+		AssertElementPresent(locator1 = "FormFields#IMAGE_TABLE_ENTRY");
+	}
+
 	macro viewMultilineTextEntry {
 		FormsAdmin.viewCannotEditFormEntries();
 

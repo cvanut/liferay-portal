@@ -378,6 +378,20 @@ definition {
 		Click(locator1 = "Form#ALT_PAGINATION_PAGE");
 	}
 
+	macro gotoPropertiesTab {
+		if (isSet(key_localeAdvanced)) {
+			AssertClick(
+				locator1 = "Form#SIDEBAR_PROPERTIES_TAB",
+				value1 = "Properties");
+		}
+		else {
+			AssertClick(
+				locator1 = "Form#SIDEBAR_PROPERTIES_TAB",
+				value1 = "Properties");
+		}
+		Pause(locator1 = "1000");
+	}
+
 	macro previewForm {
 		Navigator.selectSpecificWindow(windowTitle = "Form - Forms");
 
