@@ -321,6 +321,7 @@ definition {
 
 	@priority = "5"
 	test AddFormInGlobal {
+		property portal.upstream = "quarantine";
 		property test.name.skip.portal.instance = "Forms#AddFormInGlobal";
 		property portal.acceptance = "true";
 		property testray.component.names = "Training";
@@ -565,6 +566,7 @@ definition {
 		Form.save();
 	}
 
+	@ignore = "true"
 	@priority = "5"
 	test AddFormWithSpanishAsDefaultPortalLanguage {
 		property test.name.skip.portal.instance = "Forms#AddFormWithSpanishAsDefaultPortalLanguage";
@@ -1374,7 +1376,7 @@ definition {
 
 		FormFields.viewFieldName(fieldName = "ParagraphName");
 
-		FormFields.editParagraphBody(content = "Paragraph body text.");
+		FormFields.editParagraphBody(fieldValue = "Paragraph body text.");
 
 		Form.closeSidebar();
 
@@ -2383,7 +2385,7 @@ definition {
 
 		Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
-		FormFields.editParagraphBody(content = "Paragraph body text.");
+		FormFields.editParagraphBody(fieldValue = "Paragraph body text.");
 
 		Form.closeSidebar();
 
@@ -2518,7 +2520,7 @@ definition {
 
 		Form.editFieldLabelMetal(fieldValue = "New Paragraph");
 
-		FormFields.editParagraphBody(content = "New Paragraph body text.");
+		FormFields.editParagraphBody(fieldValue = "New Paragraph body text.");
 
 		Form.closeSidebar();
 
@@ -2915,7 +2917,7 @@ definition {
 
 		Form.editFieldLabelMetal(fieldValue = "Paragraph");
 
-		FormFields.editParagraphBody(content = "Paragraph body text.");
+		FormFields.editParagraphBody(fieldValue = "Paragraph body text.");
 
 		Form.closeSidebar();
 
@@ -3510,6 +3512,89 @@ definition {
 		FormsAdmin.viewFormTableEntry(
 			fieldLabel = "Checkbox Field",
 			fieldValue = "Checkbox 1");
+	}
+
+	@description = "This is a use case for LPS-98073."
+	@priority = "5"
+	test SubmitFormWithRequiredImageField {
+		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredImageField";
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Refresh();
+
+		Form.editName(formName = "Form");
+
+		Form.editPageTitle(formPageName = "Created Form Page Name");
+
+		Form.editDescription("test");
+
+		Form.gotoAddField(fieldType = "Image");
+
+		FormFields.enableSwitcher(fieldName = "Required Field");
+
+		Type.clickAtType(
+			locator1 = "FormFields#FIELD_HELPER_EDIT",
+			value1 = "help");
+
+		Form.gotoPropertiesTab();
+
+		FormFields.enableSwitcher(fieldName = "Repeatable");
+
+		Form.publishForm();
+
+		Form.assertFormWasPublished();
+		ProductMenu.gotoPortlet(
+			category = "Site Builder",
+			panel = "Site Administration",
+			portlet = "Pages");
+
+		SitePages.addPublicPage(pageName = "Form Page");
+
+		Navigator.gotoPage(pageName = "Form Page");
+
+		Portlet.addPG(
+			pageName = "Form Page",
+			portletName = "Form");
+
+		FormPortletNavigator.gotoSelectForm();
+
+		FormPortletConfiguration.selectForm(formName = "Form");
+
+		PortletEntry.save();
+
+		Navigator.gotoPage(pageName = "Form Page");
+
+		FormPortlet.submitWithValidationError(validationErrorMessage = "This field is required.");
+
+		Click(locator1 = "FormFields#FIELD_ADD_DUPLICATE");
+
+		Click(locator1 = "FormFields#UPLOAD_ON_WIDGET");
+
+		ItemSelector.uploadFile(
+			navTab = "Documents and Media",
+			uploadFileName = "Document_1.jpg");
+
+		Click(locator1 = "FormFields#UPLOAD_ON_DUPLICATE_FIELD");
+
+		ItemSelector.uploadFile(
+			navTab = "Documents and Media",
+			uploadFileName = "Document_1.jpg");
+
+		FormPortlet.clickSubmit();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoViewEntries(formName = "Form");
+
+		FormsAdmin.viewImageTableEntry();
 	}
 
 	@description = "This is a use case for LPS-59997."
@@ -4130,6 +4215,7 @@ definition {
 	@priority = "3"
 	test ViewBlankLabelWhenAddingNewField {
 		property test.name.skip.portal.instance = "Forms#ViewBlankLabelWhenAddingNewField";
+		property portal.upstream = "quarantine";
 
 		Navigator.openURL();
 
@@ -4426,6 +4512,7 @@ definition {
 	@priority = "4"
 	test ViewRepeatableTextFieldLabel {
 		property test.name.skip.portal.instance = "Forms#ViewRepeatableTextFieldLabel";
+		property portal.upstream = "quarantine";
 
 		Navigator.openURL();
 
