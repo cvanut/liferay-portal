@@ -25,6 +25,7 @@ definition {
 	@priority = "5"
 	test ConfigureAutocompleteWithTextField {
 		property test.name.skip.portal.instance = "FormsDataProvider#ConfigureAutocompleteWithTextField";
+		property portal.acceptance = "quarantine";
 		var portalURL = PropsUtil.get("portal.url");
 
 		Navigator.openURL();
@@ -191,6 +192,7 @@ definition {
 	@priority = "5"
 	test ConfigureWithSelectField {
 		property test.name.skip.portal.instance = "FormsDataProvider#ConfigureWithSelectField";
+		property portal.acceptance = "quarantine";
 		var portalURL = PropsUtil.get("portal.url");
 
 		Navigator.openURL();
@@ -296,6 +298,7 @@ definition {
 	@priority = "5"
 	test ViewDataRetrievedForGuestUser {
 		property test.name.skip.portal.instance = "FormsDataProvider#ViewDataRetrievedForGuestUser";
+		property portal.acceptance = "quarantine";
 		var portalURL = PropsUtil.get("portal.url");
 
 		Navigator.openURL();
