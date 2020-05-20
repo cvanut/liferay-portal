@@ -439,25 +439,6 @@ class LayoutProvider extends Component {
 		});
 	}
 
-	_handlePagesSwapped({firstIndex, secondIndex}) {
-		const {pages} = this.state;
-
-		const [firstPage, secondPage] = [pages[firstIndex], pages[secondIndex]];
-
-		this.setState({
-			pages: pages.map((page, index) => {
-				if (index === firstIndex) {
-					return secondPage;
-				}
-				else if (index === secondIndex) {
-					return firstPage;
-				}
-
-				return page;
-			}),
-		});
-	}
-
 	_handlePageDeleted(pageIndex) {
 		const {pages} = this.state;
 
@@ -474,6 +455,25 @@ class LayoutProvider extends Component {
 
 		this.setState({
 			pages,
+		});
+	}
+
+	_handlePagesSwapped({firstIndex, secondIndex}) {
+		const {pages} = this.state;
+
+		const [firstPage, secondPage] = [pages[firstIndex], pages[secondIndex]];
+
+		this.setState({
+			pages: pages.map((page, index) => {
+				if (index === firstIndex) {
+					return secondPage;
+				}
+				else if (index === secondIndex) {
+					return firstPage;
+				}
+
+				return page;
+			}),
 		});
 	}
 
