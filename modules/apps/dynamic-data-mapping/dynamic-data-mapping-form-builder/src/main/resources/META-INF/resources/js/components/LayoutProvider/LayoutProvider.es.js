@@ -442,10 +442,19 @@ class LayoutProvider extends Component {
 	_handlePagesSwapped({firstIndex, secondIndex}) {
 		const {pages} = this.state;
 
-		[pages[firstIndex], pages[secondIndex]]= [pages[secondIndex], pages[firstIndex]];
+		const [firstPage, secondPage] = [pages[firstIndex], pages[secondIndex]];
 
 		this.setState({
-			pages
+			pages: pages.map((page, index) => {
+				if (index === firstIndex) {
+					return secondPage;
+				}
+				else if (index === secondIndex) {
+					return firstPage;
+				}
+
+				return page;
+			}),
 		});
 	}
 
