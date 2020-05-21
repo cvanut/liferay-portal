@@ -425,6 +425,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>UPLOAD_PREDEFINED_VALUE</td>
+	<td>//div[@class='col-md-12']//button[contains(text(),'Select')]</td>	
+	<td></td>
+</tr>
+<tr>
 	<td>UPLOAD_ON_WIDGET</td>
 	<td>//div[@class='ddm-field'][1]//button[contains(text(),'Select')]</td>	
 	<td></td>
