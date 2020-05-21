@@ -1010,6 +1010,58 @@ definition {
 			rowEntry = "Created Form Name");
 	}
 
+	@description = "This is a use case for LPS-98073."
+	@priority = "5"
+	test CreateReadUpdateDeleteImageField {
+		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredImageField";
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Refresh();
+
+		Form.editName(formName = "Form");
+
+		Form.editPageTitle(formPageName = "Created Form Page Name");
+
+		Form.editDescription("test");
+
+		Form.gotoAddField(fieldType = "Image");
+
+		Type.clickAtType(
+			locator1 = "FormFields#FIELD_HELPER_EDIT",
+			value1 = "help");
+
+		Form.save();
+
+		FormsAdminNavigator.gotoEditField(fieldName = "Image");
+
+		FormFields.editText(
+			fieldName = "label",
+			fieldValue = "Image Field");
+
+		Type.clickAtType(
+			locator1 = "FormFields#FIELD_HELPER_EDIT",
+			value1 = "Help Text");
+
+		Form.gotoPropertiesTab();
+
+		Type.clickAtType(
+			locator1 = "FormFields#FIELD_NAME_EDIT",
+			value1 = "Image Field Name");
+
+		Click(locator1 = "FormFields#UPLOAD_PREDEFINED_VALUE");
+
+		ItemSelector.uploadFile(
+			navTab = "Documents and Media",
+			uploadFileName = "Document_1.jpg");
+
+		Form.publishForm();
+	}
+
 	@description = "This is a use case for LPS-64379."
 	@priority = "3"
 	test CreateUntitledForm {
