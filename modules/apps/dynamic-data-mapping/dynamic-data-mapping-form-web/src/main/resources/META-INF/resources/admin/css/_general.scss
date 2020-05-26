@@ -203,12 +203,26 @@ td.lfr-name-column {
 
 .form-builder-sidebar,
 .portlet-forms {
+	.ddm-translation-manager,
+	.form-builder-rule-builder,
+	.form-builder-rule-builder-container {
+		padding-top: 130px;
+	}
+
 	.form-group
 		.alloy-editor-container.input-group
 		.alloy-editor-placeholder.ae-placeholder {
 		border-left: 0;
 		padding-left: 0;
 		width: inherit;
+	}
+
+	.forms-management-bar,
+	.navigation-bar-secondary,
+	.management-bar {
+		position: fixed;
+		width: 100%;
+		z-index: 10;
 	}
 
 	.icon-asterisk {
@@ -223,6 +237,10 @@ td.lfr-name-column {
 		margin-top: -25px;
 		position: absolute;
 		z-index: 2;
+	}
+
+	.management-bar {
+		margin-top: 47px;
 	}
 
 	.radio-inline {
