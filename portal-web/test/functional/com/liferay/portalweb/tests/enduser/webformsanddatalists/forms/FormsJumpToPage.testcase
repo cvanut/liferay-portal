@@ -266,7 +266,7 @@ definition {
 	@priority = "4"
 	test ViewRuleAfterPageNameChange {
 		property test.name.skip.portal.instance = "FormsJumpToPage#ViewRuleAfterPageNameChange";
-		property portal.acceptance = "true";
+		property portal.acceptance = "quarantine";
 
 		Form.editPageTitle(
 			formPageName = "Renamed Page",
