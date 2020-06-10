@@ -1127,11 +1127,15 @@ definition {
 
 		Form.editName(formName = "Form");
 
-		Form.editPageTitle(formPageName = "Created Form Page Name");
+		Form.editPageTitle(
+			formPageName = "Created Form Page Name",
+			formTitleNumber = "1");
 
-		Form.editDescription("test");
+		Form.editDescription();
 
-		Form.gotoAddField(fieldType = "Image");
+		Form.gotoAddField(
+			fieldPositionNumber = "1",
+			fieldType = "Image");
 
 		Type.clickAtType(
 			locator1 = "FormFields#FIELD_HELPER_EDIT",
@@ -3835,11 +3839,15 @@ definition {
 
 		Form.editName(formName = "Form");
 
-		Form.editPageTitle(formPageName = "Created Form Page Name");
+		Form.editPageTitle(
+			formPageName = "Created Form Page Name",
+			formTitleNumber = "1");
 
-		Form.editDescription("test");
+		Form.editDescription();
 
-		Form.gotoAddField(fieldType = "Image");
+		Form.gotoAddField(
+			fieldPositionNumber = "1",
+			fieldType = "Image");
 
 		FormFields.enableSwitcher(fieldName = "Required Field");
 
