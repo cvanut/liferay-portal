@@ -3952,7 +3952,9 @@ definition {
 
 		Form.editDescription(formDescription - "Rich Text Description");
 
-		Form.gotoAddField(fieldType = "Rich Text");
+		Form.gotoAddField(
+            fieldPositionNumber = "1",
+            fieldType = "Rich Text");
 
 		Form.editFieldLabelMetal(fieldValue = "Rich Text Field");
 
@@ -3999,7 +4001,7 @@ definition {
 
 		FormFields.deleteDuplicateRichTextField();
 
-		CKEditor.addContent(content = "Rich Text Field Content");
+		FormFields.editParagraphBody(content = "Rich Text Field Content");
 
 		FormPortlet.submit();
 
