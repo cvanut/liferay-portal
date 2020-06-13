@@ -14,6 +14,36 @@
 	<td></td>
 </tr>
 <tr>
+	<td>FIELD_ADD_DUPLICATE</td>
+	<td>//button[@class='ddm-form-field-repeatable-add-button lfr-portal-tooltip p-0 btn btn-sm btn-primary']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FIELD_HELPER_EDIT</td>
+	<td>xpath=(//input[contains(@class,'ddm-field-text')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PROPERTIES</td>
+	<td>//div[contains(@class,'nav-item')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>UPLOAD_ON_WIDGET</td>
+	<td>//div[@class='ddm-field'][1]//button[contains(text(),'Select')]</td>	
+	<td></td>
+</tr>
+<tr>
+	<td>UPLOAD_ON_DUPLICATE_FIELD</td>
+	<td>//div[@class='ddm-field'][2]//button[contains(text(),'Select')]</td>	
+	<td></td>
+</tr>
+<tr>
+	<td>IMAGE_TABLE_ENTRY</td>
+	<td>//td[contains(@class,'lfr-image-column')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>FIELD_ADD_SPECIFIC</td>
 	<td>//div[contains(@class,'lfr-ddm-form-container')]//div[contains(@data-field-name,'${key_fieldName}')][${key_repeatableFieldNumber}]//div[contains(@class,'lfr-ddm-form-field-repeatable-toolbar')]//button[contains(@class,'btn') and contains(@title,'Duplicate')]</td>
 	<td></td>
