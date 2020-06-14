@@ -15,32 +15,7 @@
 </tr>
 <tr>
 	<td>FIELD_ADD_DUPLICATE</td>
-	<td>//button[@class='ddm-form-field-repeatable-add-button lfr-portal-tooltip p-0 btn btn-sm btn-primary']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>FIELD_HELPER_EDIT</td>
-	<td>xpath=(//input[contains(@class,'ddm-field-text')])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>PROPERTIES</td>
-	<td>//div[contains(@class,'nav-item')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>UPLOAD_ON_WIDGET</td>
-	<td>//div[@class='ddm-field'][1]//button[contains(text(),'Select')]</td>	
-	<td></td>
-</tr>
-<tr>
-	<td>UPLOAD_ON_DUPLICATE_FIELD</td>
-	<td>//div[@class='ddm-field'][2]//button[contains(text(),'Select')]</td>	
-	<td></td>
-</tr>
-<tr>
-	<td>IMAGE_TABLE_ENTRY</td>
-	<td>//td[contains(@class,'lfr-image-column')]</td>
+	<td>//div[contains(@class,'ddm-field')]//button[contains(@class,'ddm-form-field-repeatable-add-button')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,6 +26,16 @@
 <tr>
 	<td>FIELD_NAME_EDIT</td>
 	<td>//input[contains(@name,'name') and contains(@class,'ddm-field-text')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FIELD_HELPER_EDIT</td>
+	<td>xpath=(//input[contains(@class,'ddm-field-text')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PROPERTIES</td>
+	<td>//div[contains(@class,'nav-item')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -440,6 +425,21 @@
 	<td></td>
 </tr>
 <tr>
+	<td>UPLOAD_PREDEFINED_VALUE</td>
+	<td>//div[@class='col-md-12']//button[contains(text(),'Select')]</td>	
+	<td></td>
+</tr>
+<tr>
+	<td>UPLOAD_ON_WIDGET</td>
+	<td>//div[@class='ddm-field'][1]//button[contains(text(),'Select')]</td>	
+	<td></td>
+</tr>
+<tr>
+	<td>UPLOAD_ON_DUPLICATE_FIELD</td>
+	<td>//div[@class='ddm-field'][2]//button[contains(text(),'Select')]</td>	
+	<td></td>
+</tr>
+<tr>
 	<td>UPLOAD_FILE_NAME</td>
 	<td>//div[contains(@data-field-name,'${key_fieldName}')]//h4[contains(.,'${key_uploadFileName}')]</td>
 	<td></td>
@@ -474,6 +474,11 @@
 <tr>
 	<td>USER_NOTIFICATION_TIMEOUT</td>
 	<td>//input[contains(@name,'userNotificationTimeout')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>IMAGE_TABLE_ENTRY</td>
+	<td>//td[contains(@class,'lfr-image-column')]</td>
 	<td></td>
 </tr>
 </tbody>
