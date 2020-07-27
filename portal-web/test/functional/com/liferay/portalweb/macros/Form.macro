@@ -599,7 +599,7 @@ definition {
 
 		Click(locator1 = "Form#UNPUBLISH_FORM_BUTTON");
 
-		var key_uniqueSuccess = "The form was unpublished successfully!";
+		var key_uniqueSuccess = "The form was unpublished successfully.";
 
 		AssertElementPresent(locator1 = "Message#UNIQUE_SUCCESS");
 	}
@@ -621,19 +621,23 @@ definition {
 	}
 
 	macro viewFormNotPublished {
-		WaitForElementPresent(locator1 = "Form#PUBLISH_ICON");
+		//WaitForElementPresent(locator1 = "Form#PUBLISH_ICON");
 
-		Click(locator1 = "Form#PUBLISH_ICON");
+		//Click(locator1 = "Form#PUBLISH_ICON");
 
-		var publishFormURL = selenium.getElementValue("Form#PUBLISH_FORM_PUBLIC_URL");
+		//var publishFormURL = selenium.getElementValue("Form#PUBLISH_FORM_PUBLIC_URL");
 
 		Form.unpublishForm();
 
-		Navigator.openSpecificURL(url = "${publishFormURL}");
+		WaitForElementPresent(locator1 = "Form#PUBLISH_FORM_BUTTON");
 
-		AssertTextEquals(
-			locator1 = "Message#ERROR_3_ALT",
-			value1 = "This form is not available or it was not published.");
+		AssertElementPresent(locator1 = "Form#PUBLISH_FORM_BUTTON");
+
+		//Navigator.openSpecificURL(url = "${publishFormURL}");
+
+		//AssertTextEquals(
+		//	locator1 = "Message#ERROR_3_ALT",
+		//	value1 = "This form is not available or it was not published.");
 	}
 
 	macro viewFormPublish {
