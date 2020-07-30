@@ -145,7 +145,7 @@ definition {
 	@priority = "5"
 	test ConfigureCalculateRule {
 		property test.name.skip.portal.instance = "FormRules#ConfigureCalculateRule";
-		property portal.acceptance = "true";
+		property portal.acceptance = "quarantine";
 		var portalURL = PropsUtil.get("portal.url");
 
 		Navigator.openURL();
