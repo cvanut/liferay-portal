@@ -572,7 +572,7 @@ definition {
 
 		Click(locator1 = "Form#UNPUBLISH_FORM_BUTTON");
 
-		var key_uniqueSuccess = "The form was unpublished successfully!";
+		var key_uniqueSuccess = "The form was unpublished successfully.";
 
 		AssertElementPresent(locator1 = "Message#UNIQUE_SUCCESS");
 	}
