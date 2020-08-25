@@ -4141,6 +4141,89 @@ definition {
 			fieldValue = "Text Field Value, Text Field Value Repeat");
 	}
 
+	@description = "Submit a Form with Image Field."
+	@priority = "5"
+	test SubmitFormWithRequiredRichTextField {
+		Navigator.openURL();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Form.editName(formName = "Rich Text Form");
+
+		Form.editDescription(formDescription - "Rich Text Description");
+
+		Form.gotoAddField(
+            fieldPositionNumber = "1",
+            fieldType = "Rich Text");
+
+		Form.editFieldLabelMetal(fieldValue = "Rich Text Field");
+
+		FormFields.enableSwitcher(fieldName = "Required");
+
+		Form.gotoAdvancedTab();
+
+		FormFields.enableSwitcher(fieldName = "Repeatable");
+
+		Form.closeSidebar();
+
+		Form.save();
+
+		ProductMenu.gotoPortlet(
+			category = "Site Builder",
+			panel = "Site Administration",
+			portlet = "Pages");
+
+		SitePages.addPublicPage(pageName = "Form Page");
+
+		Navigator.gotoPage(pageName = "Form Page");
+
+		Portlet.addPG(
+			pageName = "Form Page",
+			portletName = "Form");
+
+		FormPortletNavigator.gotoSelectForm();
+
+		FormPortletConfiguration.selectForm(formName = "Rich Text Form");
+
+		PortletEntry.save();
+
+		Navigator.gotoPage(pageName = "Form Page");
+
+		FormFields.viewTextLabel(
+			fieldLabel = "Rich Text Field",
+			fieldName = "TextField");
+
+		FormFields.viewRequiredAsterisk();
+
+		FormPortlet.submitWithValidationError();
+
+		FormFields.duplicateRichTextField();
+
+		FormFields.deleteDuplicateRichTextField();
+
+		FormFields.editParagraphBody(content = "Rich Text Field Content");
+
+		FormPortlet.submit();
+
+		Navigator.openURL();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoViewEntries();
+
+		FormsAdmin.viewFormTableEntry(
+			fieldLabel = "Text Field",
+			fieldValue = "Rich Text Field Content");
+	}
+
 	@description = "This is a use case for LPS-58829."
 	@priority = "5"
 	test SubmitFormWithRequiredTextField {
