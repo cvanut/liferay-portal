@@ -37,8 +37,8 @@ definition {
 
 	@priority = "4"
 	test Add20Forms {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#Add20Forms";
 
 		Navigator.openURL();
@@ -102,8 +102,8 @@ definition {
 
 	@priority = "5"
 	test AddElementSetsWithTranslation {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#AddElementSetsWithTranslation";
 		property testray.component.names = "Training";
 
@@ -381,8 +381,8 @@ definition {
 
 	@priority = "5"
 	test AddFormInGlobal {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#AddFormInGlobal";
 		property testray.component.names = "Training";
 
@@ -470,8 +470,8 @@ definition {
 	@description = "This is a use case for LPS-68377."
 	@priority = "3"
 	test AddFormToUserSiteAndViewNoDuplicates {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#AddFormToUserSiteAndViewNoDuplicates";
 
 		Navigator.openURL();
@@ -591,8 +591,8 @@ definition {
 	@description = "This is a use case for LPS-73274."
 	@priority = "4"
 	test AddFormWithDuplicateTextFields {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#AddFormWithDuplicateTextFields";
 
 		Navigator.openURL();
@@ -735,8 +735,8 @@ definition {
 	@description = "This is a use case for LPS-75116 and LPS-79101."
 	@priority = "4"
 	test ChangeFieldType {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ChangeFieldType";
 
 		Navigator.openURL();
@@ -1076,8 +1076,8 @@ definition {
 	@description = "This is a use case for LPS-68418."
 	@priority = "3"
 	test ConfigureAutosave {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ConfigureAutosave";
 
 		Navigator.openURL();
@@ -1199,8 +1199,8 @@ definition {
 	@description = "This is a use case for LPS-64379."
 	@priority = "3"
 	test CreateUntitledForm {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#CreateUntitledForm";
 
 		Navigator.openURL();
@@ -1400,8 +1400,8 @@ definition {
 	@description = "This is a use case for LPS-74997."
 	@priority = "4"
 	test DeleteSelectFromListOptionAndViewEntries {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#DeleteSelectFromListOptionAndViewEntries";
 
 		Navigator.openURL();
@@ -1563,8 +1563,8 @@ definition {
 
 	@priority = "4"
 	test EditAllFormFieldNames {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#EditAllFormFieldNames";
 
 		Navigator.openURL();
@@ -1680,8 +1680,8 @@ definition {
 	@description = "This is a use case for LPS-50757."
 	@priority = "4"
 	test EditAllFormFieldsTypesUsedBySystemSettings {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#EditAllFormFieldsTypesUsedBySystemSettings";
 
 		Navigator.openURL();
@@ -1932,8 +1932,8 @@ definition {
 	@description = "This is a use case for LPS-69100 and LPS-69334."
 	@priority = "2"
 	test EditFormWithUpdatedSiteAndUserLocale {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#EditFormWithUpdatedSiteAndUserLocale";
 
 		Navigator.openURL();
@@ -2013,8 +2013,8 @@ definition {
 	@description = "This is a use case for LPS-78697."
 	@priority = "4"
 	test EditTranslatedGridField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#EditTranslatedGridField";
 
 		Navigator.openURL();
@@ -2155,8 +2155,8 @@ definition {
 	@description = "This is a use case for LPS-59331"
 	@priority = "5"
 	test NavigateToCorrectForm {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#NavigateToCorrectForm";
 
 		Navigator.openURL();
@@ -2248,8 +2248,8 @@ definition {
 	test PreviewAndPublishForm {
 		property app.server.types = "jboss,tcserver,tomcat,weblogic,websphere,wildfly";
 		property database.types = "db2,hypersonic,mariadb,mysql,oracle,postgresql,sqlserver,sybase";
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 
 		Navigator.openURL();
 
@@ -2341,8 +2341,8 @@ definition {
 	@description = "This is a use case for LPS-68381."
 	@priority = "3"
 	test ReorderFieldOptions {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ReorderFieldOptions";
 
 		Navigator.openURL();
@@ -2412,8 +2412,8 @@ definition {
 	@description = "This is a use case for LPS-59336."
 	@priority = "4"
 	test SearchFormRecordMultipleEntries {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SearchFormRecordMultipleEntries";
 
 		var fieldValueList = "testEntry1,exampleText,sampleAnswer";
@@ -2516,8 +2516,8 @@ definition {
 	@description = "This is a use case for LPS-76079."
 	@priority = "4"
 	test SelectAndRemoveMultipleOptionsInSelectFromListField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SelectAndRemoveMultipleOptionsInSelectFromListField";
 
 		Navigator.openURL();
@@ -2974,8 +2974,8 @@ definition {
 
 	@priority = "4"
 	test SubmitFormAndViewEmailNotification {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormAndViewEmailNotification";
 		property test.smtp.server.enabled = "true";
 
@@ -3064,8 +3064,8 @@ definition {
 	@priority = "5"
 	test SubmitFormContainingCaptchaAndViewTextFieldValue {
 		property captcha.enabled = "true";
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormContainingCaptchaAndViewTextFieldValue";
 
 		Navigator.openURL();
@@ -3778,8 +3778,8 @@ definition {
 	@description = "This is a use case for LPS-59338."
 	@priority = "4"
 	test SubmitFormWithRequiredCheckboxField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredCheckboxField";
 
 		Navigator.openURL();
@@ -4136,8 +4136,8 @@ definition {
 	@description = "This is a use case for LPS-59335."
 	@priority = "5"
 	test SubmitFormWithRequiredRepeatingTextField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredRepeatingTextField";
 
 		Navigator.openURL();
@@ -4217,8 +4217,8 @@ definition {
 	@description = "This is a use case for LPS-58829."
 	@priority = "5"
 	test SubmitFormWithRequiredTextField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredTextField";
 		property testray.component.names = "Training";
 
@@ -4300,8 +4300,8 @@ definition {
 	@description = "This is a use case for LPS-59351."
 	@priority = "4"
 	test SubmitFormWithSwitcherCheckboxField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithSwitcherCheckboxField";
 
 		Navigator.openURL();
@@ -4395,8 +4395,8 @@ definition {
 
 	@priority = "4"
 	test SubmitFormWithUploadField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithUploadField";
 
 		Navigator.openURL();
@@ -4470,8 +4470,8 @@ definition {
 	@description = "This is a use case for LPS-73322."
 	@priority = "4"
 	test SubmitWithRequiredDateField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitWithRequiredDateField";
 
 		Navigator.openURL();
@@ -4697,8 +4697,8 @@ definition {
 	@description = "This is a use case for LPS-70560."
 	@priority = "4"
 	test ViewFieldValidationIsNotBypassedWhenNextButtonIsHitTwice {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewFieldValidationIsNotBypassedWhenNextButtonIsHitTwice";
 
 		Navigator.openURL();
@@ -4863,8 +4863,8 @@ definition {
 
 	@priority = "4"
 	test ViewRepeatableTextFieldLabel {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewRepeatableTextFieldLabel";
 
 		Navigator.openURL();
@@ -4927,8 +4927,8 @@ definition {
 	@description = "This is a use case for LPS-68390."
 	@priority = "3"
 	test ViewSaveNotification {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewSaveNotification";
 
 		Navigator.openURL();
@@ -4961,8 +4961,8 @@ definition {
 	@description = "This is a use case for LPS-71072."
 	@priority = "5"
 	test ViewSuccessPage {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewSuccessPage";
 		property testray.component.names = "Training";
 
