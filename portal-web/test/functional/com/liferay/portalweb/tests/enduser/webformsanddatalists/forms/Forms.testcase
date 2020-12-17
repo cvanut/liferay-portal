@@ -71,8 +71,8 @@ definition {
 
 	@priority = "4"
 	test Add30Fields {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#Add30Fields";
 
 		Navigator.openURL();
@@ -636,8 +636,8 @@ definition {
 
 	@priority = "5"
 	test AddFormWithSpanishAsDefaultPortalLanguage {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#AddFormWithSpanishAsDefaultPortalLanguage";
 
 		Navigator.openURL();
@@ -1231,8 +1231,8 @@ definition {
 	@description = "This is a use case for LPS-60520."
 	@priority = "4"
 	test DeleteDateFieldAndViewEntries {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#DeleteDateFieldAndViewEntries";
 
 		Navigator.openURL();
@@ -1342,8 +1342,8 @@ definition {
 
 	@priority = "5"
 	test DeletePages {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#DeletePages";
 
 		Navigator.openURL();
@@ -1503,6 +1503,8 @@ definition {
 	@description = "This is a use case for LPS-68362."
 	@priority = "3"
 	test DeleteSelectFromListOptionValue {
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#DeleteSelectFromListOptionValue";
 
 		Navigator.openURL();
@@ -1870,6 +1872,8 @@ definition {
 	@description = "This is a use case for LPS-59749"
 	@priority = "3"
 	test EditFormsConfigurationViaSystemSettings {
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#EditFormsConfigurationViaSystemSettings";
 
 		Navigator.openURL();
@@ -2594,8 +2598,8 @@ definition {
 
 	@priority = "5"
 	test SubmitFormAfterEditingFields {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormAfterEditingFields";
 		property testray.component.names = "Training";
 
@@ -3161,8 +3165,8 @@ definition {
 	@description = "This is a use case for LPS-64798."
 	@priority = "5"
 	test SubmitFormWithAllFieldTypesAndThreePages {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithAllFieldTypesAndThreePages";
 		property testray.component.names = "Training";
 
@@ -3502,6 +3506,7 @@ definition {
 	@priority = "5"
 	test SubmitFormWithCustomTextContainingValidation {
 		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithCustomTextContainingValidation";
 
 		Navigator.openURL();
@@ -3592,8 +3597,8 @@ definition {
 
 	@priority = "4"
 	test SubmitFormWithMultipleFieldsAndViewEntriesViaDescriptiveDisplay {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "false";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithMultipleFieldsAndViewEntriesViaDescriptiveDisplay";
 
 		Navigator.openURL();
@@ -3962,6 +3967,8 @@ definition {
 	@description = "This is a use case for LPS-59997."
 	@priority = "3"
 	test SubmitFormWithRequiredMultiLineTextField {
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredMultiLineTextField";
 
 		Navigator.openURL();
@@ -4045,6 +4052,8 @@ definition {
 
 	@priority = "4"
 	test SubmitFormWithRequiredRadioField {
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#SubmitFormWithRequiredRadioField";
 
 		Navigator.openURL();
@@ -4630,8 +4639,8 @@ definition {
 	@description = "This is a use case for LPS-68182."
 	@priority = "3"
 	test ViewBlankLabelWhenAddingNewField {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewBlankLabelWhenAddingNewField";
 
 		Navigator.openURL();
@@ -4668,8 +4677,8 @@ definition {
 	@description = "This is a use case for LPS-69214."
 	@priority = "3"
 	test ViewConfirmationWhenLeavingFormWithoutSaving {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewConfirmationWhenLeavingFormWithoutSaving";
 
 		Navigator.openURL();
@@ -4704,8 +4713,8 @@ definition {
 	@description = "This is a use case for LPS-64305."
 	@priority = "4"
 	test ViewDefaultFieldNamesWithPunctuationCharacters {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewDefaultFieldNamesWithPunctuationCharacters";
 
 		Navigator.openURL();
@@ -4856,8 +4865,8 @@ definition {
 	@description = "This is a use case for LPS-66513."
 	@priority = "3"
 	test ViewFormWithMultipleSelectionFieldAsASwitcherAndHideLabel {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
+		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "Forms#ViewFormWithMultipleSelectionFieldAsASwitcherAndHideLabel";
 
 		Navigator.openURL();
